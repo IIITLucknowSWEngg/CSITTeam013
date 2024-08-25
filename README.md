@@ -1,12 +1,12 @@
 # CSITTeam013
 CSITTeam013
 
-# TEAM NAME: 
-Nova
-# TEAM IDEA: 
-Hotstar Clone
+TEAM NAME : Nova
 
-# TEAM MEMBERS:
+PROJECT IDEA : Hotstar Clone
+
+
+TEAM MEMBERS:
 1. Amolly Choudhary LCS2023019 amolly06 amollychoudhary@gmail.com
 2. Ayushi Dhete LIT2023005 ayushidhete Ayushidhete05@gmail.com
 3. Bhuvika Agrawal LIT2023028 Bhuvika-Agrawal bhuviagarval2014@gmail.com
