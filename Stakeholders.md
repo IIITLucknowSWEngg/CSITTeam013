@@ -47,7 +47,7 @@ interactions (e.g., payments, profile creation, and video playback)
 happen without issues. They also test performance under high traffic 
 loads. 
 
-2.2 Design Team 
+### 2.2 Design Team 
 
 **• UI/UX Designers:** 
 UI/UX designers focus on creating a user-friendly interface that is 
@@ -55,7 +55,7 @@ easy to navigate, providing users with an enjoyable experience. They design
 menus, recommendations, and layouts in a way  
 that maximizes user engagement and content discovery.
 
-• Graphic Designers: 
+**• Graphic Designers:** 
 They are responsible for designing the platform’s branding elements, 
 including logos, banners, and promotional visuals. They also help with 
 designing thumbnails and artwork for movies, TV shows,  and other 
