@@ -26,6 +26,28 @@ visually appealing, ensuring that users can easily browse, search, and
 play content across devices (e.g., mobile, web, smart TV). They 
 ensure the platform is responsive, intuitive, and fast. 
 
+**Backend Developers:** 
+Backend developers manage the server-side logic, databases, and 
+integrations. They handle tasks like user authentication, content 
+delivery, streaming optimization, and ensuring high availability during 
+peak traffic. They also work on content delivery networks (CDNs) for 
+smooth streaming. 
+
+**Full-Stack Developers:** 
+Possess expertise in both frontend and backend development. They 
+bridge the gap between the two, they ensure the platform’s 
+functionality is cohesive, efficient, and scalable, providing end-to-end 
+solutions that work seamlessly from server to user interface. 
+
+**QA Testers:** 
+Quality Assurance (QA) testers ensure that the platform runs 
+smoothly across various browsers and devices. They run tests to 
+identify bugs, check for broken functionality, and ensure that user 
+interactions (e.g., payments, profile creation, and video playback) 
+happen without issues. They also test performance under high traffic 
+loads. 
+
+
 
 
  
