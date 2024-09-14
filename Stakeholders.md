@@ -1,7 +1,7 @@
 # Stakeholders of Nova Digital:
 
 ### 1. Project Overview
-# **Project Name:** NOVA DIGITAL
+***Project Name:*** NOVA DIGITAL
 
 **Description:** A comprehensive streaming platform offering a vast 
 library of digital content, including movies, TV shows, live sports, and 
