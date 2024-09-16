@@ -57,3 +57,60 @@ Overall, the objective of NOVA Digital is to deliver an engaging and immersive e
 
 13. Notification and Alerts: Users should receive notifications about new releases, expiring content, or recommendations based on their preferences.
 
+
+## **User Flow**
+Persona - Aarav is a young professional who enjoys binge-watching movies and TV series in his spare time. He subscribes to NOVA Digital for its wide content library and seamless user experience.
+
+1. Sign Up/Log In: Aarav opens the NOVA Digital website or app, where he is greeted by a splash screen and then prompted to sign in. As a first-time user, Aarav opts to sign up by entering his name, email, and password. Alternatively, he can sign up using social media or Google accounts.
+
+    - Returning Users: For returning users, they can log in using their registered email or phone number.
+
+![Sign Up - Or - Log In](../Images/SignUp_LogIn.png)
+
+
+2. Subscription Selection: Aarav is prompted to choose a subscription plan (Basic, Standard, or Premium), each with different pricing and features. He chooses the plan that suits his streaming needs and completes the payment.
+
+![Subscription Selection](../Images/subscription_selection.png)
+
+3. Profile Setup: Aarav sets up his profile by selecting an avatar, providing his name, and indicating his preferred languages and genres. Since multiple profiles are supported, he also sets up profiles for other members of his household.
+
+![Profile Setup](../Images/Profile_setup.png)
+
+
+
+4. Home Screen: Aarav is taken to the home screen, which displays recommended content based on his preferences. He can browse through various categories such as Trending, New Releases, Popular on NOVA Digital, and Genres (e.g., Comedy, Thriller).
+
+![Home_Screen](../Images/home_screen.png)
+
+
+5. Search & Browse: Aarav uses the search bar to find a specific movie or show, or he navigates through categories. He can also view trending shows, top picks, or new arrivals.
+
+![search - Browse](../Images/Search_or_Browse.png)
+
+
+6. Content Details: After selecting a movie or show, Aarav is presented with detailed information, including the title, synopsis, cast, and user ratings. He can choose to play the content immediately or add it to his watchlist for later.
+
+![Content Details](../Images/Content_Details.png)
+
+
+7. Playback and Controls: Aarav starts watching the movie, and he can adjust settings like subtitles, audio language, video quality, and screen size. He can pause, skip, or rewind using the playback controls.
+
+![Playback - Or - Controls](../Images/Playback_And_Controls.png)
+
+8. Recommendations and Notifications: After watching a few movies, NOVA Digital learns his viewing preferences and starts recommending similar content. Aarav receives notifications about new content added to his favorite genres or upcoming releases.
+
+9. Profile Management and Subscription: Aarav can access his account settings to update his subscription plan, payment details, or manage profiles. He can also view his viewing history, manage downloads, and see the number of devices logged into his account.
+
+![Profile Management and Subscription](../Images/Profile_Management.png)
+
+10. Offline Viewing: Aarav downloads his favorite TV series to watch offline while traveling. He can manage his downloads from the app and delete them when he no longer needs them.
+
+
+11. Parental Controls: Aarav sets up parental controls on his child’s profile to restrict access to mature content and set a PIN for content rated above a certain age level.
+
+![Parental Controls](../Images/Parental_Control.png)
+
+12. Logout: After watching, Aarav logs out of the app, knowing that he can resume his content from the same spot when he returns later.
+
+![Logout](../Images/Logout.png)
+
