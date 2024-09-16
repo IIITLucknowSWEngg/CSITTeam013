@@ -27,3 +27,33 @@ Overall, the objective of NOVA Digital is to deliver an engaging and immersive e
 - User Device Capability: NOVA Digital assumes that users' devices (smartphones, tablets, TVs, etc.) are compatible with the platform's technical requirements.
 - User Preferences: The platform assumes that users will engage with personalized content suggestions based on their viewing history and interactions.
 - User Willingness to Subscribe: It is assumed that users are willing to subscribe to access premium content.
+
+
+## **User Requirements:**
+
+1. Content Selection: Users should be able to browse through a large library of movies, TV shows, and original series based on genres, languages, popularity, and personal recommendations. They can also search for specific titles using a search bar.
+   
+2. User Profile: Users should be able to create and manage personal profiles with information such as name, email, password, and viewing preferences. Each user profile will have its own recommendations, viewing history, and watchlist.
+
+3. Subscription Management: Users should be able to choose from different subscription plans (e.g., Basic, Standard, Premium) based on their viewing needs. They can upgrade, downgrade, or cancel their subscriptions at any time.
+
+4. Content Playback and Control: Users should be able to start, pause, rewind, fast-forward, and stop videos at any point. They can choose different resolutions (SD, HD, 4K) based on their internet speed and device capability.
+
+5. Multiple User Profiles: The platform should support multiple user profiles under a single subscription plan. For example, a family can have different profiles for parents, children, etc., each with personalized recommendations and watch histories.
+
+6. Offline Viewing: Users should be able to download select content to their devices to watch offline, with the ability to manage downloads and storage space.
+
+7. Content Recommendations: Based on the user’s watch history, the platform should provide personalized recommendations for movies and TV shows.
+
+8. Parental Controls: The platform should include parental control options, allowing users to set restrictions on content based on ratings (e.g., blocking R-rated or mature content).
+
+9. Multi-Device Streaming: Users should be able to stream content across different devices like smartphones, tablets, laptops, and smart TVs. The number of simultaneous streams should depend on the subscription plan.
+
+10. Watchlist: Users should be able to add content to a watchlist to save movies and shows for future viewing.
+
+11. Resume Watching: Users should have the option to resume watching content from where they left off, even if they switch between devices.
+
+12. User Ratings and Reviews: Users should be able to rate and review content to help others discover popular or trending shows and movies.
+
+13. Notification and Alerts: Users should receive notifications about new releases, expiring content, or recommendations based on their preferences.
+
