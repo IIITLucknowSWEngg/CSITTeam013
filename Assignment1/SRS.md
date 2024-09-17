@@ -36,3 +36,43 @@ Access Control: Strict role-based access control (RBAC) for managing administrat
 • 
 Fraud Detection: Systems to detect and mitigate fraudulent access or piracy attempts.
 • Use Case: The platform detects a user attempting to bypass geo-restrictions using a VPN and immediately restricts access to the content, notifying the user of the violation.
+5.4 Software Quality Attributes:
+• 
+Usability: The interface should be intuitive and accessible (e.g., screen reader support).
+• Use Case: A visually impaired user navigates the platform easily using a screen reader to select shows and movies, with all menu items properly labeled for accessibility.
+• 
+Responsiveness: Instant interaction responses, such as play/pause, should be smooth and without delay.
+• Use Case: A user clicks the "pause" button while watching a movie, and the playback immediately stops without any delay or stuttering.
+• 
+Localization: Support for multiple languages, including subtitles and audio in regional languages.
+• Use Case: A user in Spain accesses a Bollywood movie and has the option to switch between Spanish, Hindi, and English subtitles, as well as dubbed audio tracks.
+5.5 Maintainability Requirements:
+• 
+Modular Architecture: Code should be modular to facilitate easier updates and new feature additions without impacting existing functionality.
+• Use Case: The development team adds a new "Watch Party" feature to the platform, and thanks to the modular system, they deploy it without affecting the core streaming functionality.
+• 
+Automated Testing: Continuous integration and automated testing practices should ensure quick identification and resolution of bugs.
+• Use Case: A new recommendation algorithm is added, and automated tests are run immediately to verify that it does not break any other features before it is pushed to production.
+• 
+Version Control: A robust version control system to track changes and revert to stable versions if necessary.
+• Use Case: After deploying a new update that causes minor interface bugs, the team quickly reverts to the previous stable version while they fix the issue.
+5.6 Reliability Requirements:
+• 
+Fault Tolerance: The system should have mechanisms to recover from hardware or software failures without impacting user experience.
+• Use Case: While a user is streaming a show, one server experiences an issue. The system automatically switches the user’s session to a backup server, allowing the stream to continue without interruption.
+• 
+High Availability: Ensure 99.99% uptime, with redundant servers and automatic failover.
+• Use Case: Even during scheduled maintenance, the platform remains accessible due to server redundancy, ensuring that users don’t experience downtime.
+• 
+Content Delivery Network (CDN): Use of global CDNs to ensure reliable and quick content delivery, regardless of geographic location.
+• Use Case: A user in a remote part of the world streams content without any noticeable delays because the CDN distributes the content from a server close to their location.
+5.7 Interoperability Requirements:
+• 
+Cross-Platform Compatibility: The platform should work seamlessly across various devices (smart TVs, smartphones, tablets).
+• Use Case: A user starts watching a series on their phone, pauses it, and resumes watching on their smart TV without any issues or loss of progress.
+• 
+Third-Party Integrations: Ability to integrate with external services like payment gateways and social media.
+• Use Case: A user connects their Netflix account to their social media, sharing what they’re watching on their profile and using an integrated payment gateway to renew their subscription.
+• 
+APIs: Open and well-documented APIs for third-party apps and plugins.
+• Use Case: A third-party app developer creates a recommendation tool that integrates seamlessly with the platform’s API to suggest content based on user preferences.
