@@ -80,12 +80,12 @@ Persona - Aarav is a young professional who enjoys binge-watching movies and TV 
 
 4. Home Screen: Aarav is taken to the home screen, which displays recommended content based on his preferences. He can browse through various categories such as Trending, New Releases, Popular on NOVA Digital, and Genres (e.g., Comedy, Thriller).
 
-![Home_Screen](../Images/home_screen.png)
+![Home_Screen](../Images/Home_Screen.png)
 
 
 5. Search & Browse: Aarav uses the search bar to find a specific movie or show, or he navigates through categories. He can also view trending shows, top picks, or new arrivals.
 
-![search - Browse](../Images/Search_or_Browse.png)
+![search - Browse](../Images/Search_or_browse.png)
 
 
 6. Content Details: After selecting a movie or show, Aarav is presented with detailed information, including the title, synopsis, cast, and user ratings. He can choose to play the content immediately or add it to his watchlist for later.
