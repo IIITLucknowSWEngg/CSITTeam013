@@ -19,27 +19,27 @@ advertising.
 
 ## 2. Internal Stakeholders 
 ### 2.1 Development Team 
-**Frontend Developers:** 
+- **Frontend Developers:** 
 These developers are responsible for creating the client-side 
 experience of the platform. They work on making the interface 
 visually appealing, ensuring that users can easily browse, search, and 
 play content across devices (e.g., mobile, web, smart TV). They 
 ensure the platform is responsive, intuitive, and fast. 
 
-**Backend Developers:** 
+- **Backend Developers:** 
 Backend developers manage the server-side logic, databases, and 
 integrations. They handle tasks like user authentication, content 
 delivery, streaming optimization, and ensuring high availability during 
 peak traffic. They also work on content delivery networks (CDNs) for 
 smooth streaming. 
 
-**Full-Stack Developers:** 
+- **Full-Stack Developers:** 
 Possess expertise in both frontend and backend development. They 
 bridge the gap between the two, they ensure the platform’s 
 functionality is cohesive, efficient, and scalable, providing end-to-end 
 solutions that work seamlessly from server to user interface. 
 
-**QA Testers:** 
+- **QA Testers:** 
 Quality Assurance (QA) testers ensure that the platform runs 
 smoothly across various browsers and devices. They run tests to 
 identify bugs, check for broken functionality, and ensure that user 
@@ -48,7 +48,6 @@ happen without issues. They also test performance under high traffic
 loads. 
 
 ### 2.2 Design Team 
-
 - **UI/UX Designers:** 
 UI/UX designers focus on creating a user-friendly interface that is 
 easy to navigate, providing users with an enjoyable experience. They design 
@@ -61,6 +60,60 @@ including logos, banners, and promotional visuals. They also help with
 designing thumbnails and artwork for movies, TV shows,  and other 
 content, ensuring consistency in the visual style. 
 
+### 2.3 Product Management 
+- **Product Managers:** 
+Product managers oversee the overall direction and feature 
+development of the platform. They prioritize tasks for the 
+development team based on user feedback, business goals, and    
+competitive research. They ensure that features like search, 
+recommendations, and content discovery are implemented to meet 
+both user needs and business targets. 
+
+- **Business Analysts:** 
+Business analysts use data-driven insights to inform decisions about 
+platform updates, feature rollouts, and content curation. They track 
+user behaviour, viewing trends, and subscription patterns to suggest 
+improvements and optimizations, increasing user retention and 
+engagement. 
+
+### 3. External Stakeholders 
+
+## 3.1 Users 
+- **Free Users:** 
+These users access a limited range of content with ads. They typically 
+serve as a base for potential premium users. Their feedback on ads 
+and free content is important to improve monetization strategies and 
+user experience. 
+
+- **Subscribers (Premium Users):** 
+Premium users pay for access to exclusive content or ad-free 
+streaming. They are the main source of revenue and their experience 
+is prioritized, with exclusive benefits like early access to content, 
+higher video quality, or exclusive shows. Their satisfaction drives 
+retention and growth of the platform. 
+
+## 3.2 Content Providers
+- **Production Houses/Studios:** 
+Major production studios provide blockbuster movies, TV shows, and 
+live sports events to the platform. The content provided by them 
+often drives subscriptions and user engagement. The platform 
+negotiates deals with these providers to secure streaming rights, 
+often for exclusive or original content. 
+
+- **Independent Creators:** 
+This segment includes content creators who offer niche or user
+generated content (e.g., indie films, web series). Platforms like this 
+can give them a space to distribute their work, sometimes offering 
+revenue-sharing models based on views or subscriptions. 
+
+## 3.3 Advertisers 
+- **Brands/Companies:** 
+Brands purchase ad placements on the platform, particularly for free 
+users. Ads can appear before, during, or after content, in various 
+formats like video ads, banner ads, or sponsorships. The platform 
+provides targeted advertising options to brands, based on user 
+demographics, preferences, and behaviour, to increase ad relevance 
+and effectiveness. 
 
 
  
