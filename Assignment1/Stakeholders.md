@@ -76,9 +76,9 @@ user behaviour, viewing trends, and subscription patterns to suggest
 improvements and optimizations, increasing user retention and 
 engagement. 
 
-### 3. External Stakeholders 
+## 3. External Stakeholders 
 
-## 3.1 Users 
+### 3.1 Users 
 - **Free Users:** 
 These users access a limited range of content with ads. They typically 
 serve as a base for potential premium users. Their feedback on ads 
@@ -92,7 +92,7 @@ is prioritized, with exclusive benefits like early access to content,
 higher video quality, or exclusive shows. Their satisfaction drives 
 retention and growth of the platform. 
 
-## 3.2 Content Providers
+### 3.2 Content Providers
 - **Production Houses/Studios:** 
 Major production studios provide blockbuster movies, TV shows, and 
 live sports events to the platform. The content provided by them 
@@ -106,7 +106,7 @@ generated content (e.g., indie films, web series). Platforms like this
 can give them a space to distribute their work, sometimes offering 
 revenue-sharing models based on views or subscriptions. 
 
-## 3.3 Advertisers 
+### 3.3 Advertisers 
 - **Brands/Companies:** 
 Brands purchase ad placements on the platform, particularly for free 
 users. Ads can appear before, during, or after content, in various 
