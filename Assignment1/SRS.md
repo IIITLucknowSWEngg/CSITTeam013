@@ -186,9 +186,9 @@ The platform will prioritize usability with:
 - *Accessibility*: Subtitles, audio descriptions, and language options.
 - *Advanced Search*: Enhanced search functionalities with filters based on genres, release years, ratings, and more.
 
-# Performance and System Requirements
+## Performance and System Requirements
 
-## 5.1 Performance Requirements:
+### 5.1 Performance Requirements:
 
 - **Scalability:**  
   The platform should handle millions of concurrent users without service degradation, including streaming at multiple resolutions (e.g., 1080p, 4K).
@@ -206,7 +206,7 @@ The platform will prioritize usability with:
   Efficient use of bandwidth to ensure streaming quality on both high and low-speed networks.
   - **Use Case:** A user on a slower mobile network streams content in 720p, while a user on high-speed broadband watches the same show in 4K. Both users experience smooth playback due to adaptive streaming based on available bandwidth.
 
-## 5.2 Safety Requirements:
+### 5.2 Safety Requirements:
 
 - **Data Protection:**  
   Regular backups and disaster recovery plans should be in place to protect user data from loss or corruption.
@@ -220,7 +220,7 @@ The platform will prioritize usability with:
   Appropriate age-based restrictions to ensure children cannot access inappropriate content.
   - **Use Case:** A child attempts to access a TV-MA rated show, but the platform prompts for the parent’s password due to the parental controls enabled on the account.
 
-## 5.3 Security Requirements:
+### 5.3 Security Requirements:
 
 - **User Authentication:**  
   Two-factor authentication (2FA) and strong password policies to protect user accounts.
@@ -238,7 +238,7 @@ The platform will prioritize usability with:
   Systems to detect and mitigate fraudulent access or piracy attempts.
   - **Use Case:** The platform detects a user attempting to bypass geo-restrictions using a VPN and immediately restricts access to the content, notifying the user of the violation.
 
-## 5.4 Software Quality Attributes:
+### 5.4 Software Quality Attributes:
 
 - **Usability:**  
   The interface should be intuitive and accessible (e.g., screen reader support).
@@ -252,7 +252,7 @@ The platform will prioritize usability with:
   Support for multiple languages, including subtitles and audio in regional languages.
   - **Use Case:** A user in Spain accesses a Bollywood movie and has the option to switch between Spanish, Hindi, and English subtitles, as well as dubbed audio tracks.
 
-## 5.5 Maintainability Requirements:
+### 5.5 Maintainability Requirements:
 
 - **Modular Architecture:**  
   Code should be modular to facilitate easier updates and new feature additions without impacting existing functionality.
@@ -266,7 +266,7 @@ The platform will prioritize usability with:
   A robust version control system to track changes and revert to stable versions if necessary.
   - **Use Case:** After deploying a new update that causes minor interface bugs, the team quickly reverts to the previous stable version while they fix the issue.
 
-## 5.6 Reliability Requirements:
+### 5.6 Reliability Requirements:
 
 - **Fault Tolerance:**  
   The system should have mechanisms to recover from hardware or software failures without impacting user experience.
@@ -280,7 +280,7 @@ The platform will prioritize usability with:
   Use of global CDNs to ensure reliable and quick content delivery, regardless of geographic location.
   - **Use Case:** A user in a remote part of the world streams content without any noticeable delays because the CDN distributes the content from a server close to their location.
 
-## 5.7 Interoperability Requirements:
+### 5.7 Interoperability Requirements:
 
 - **Cross-Platform Compatibility:**  
   The platform should work seamlessly across various devices (smart TVs, smartphones, tablets).
