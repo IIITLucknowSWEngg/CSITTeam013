@@ -115,5 +115,19 @@ provides targeted advertising options to brands, based on user
 demographics, preferences, and behaviour, to increase ad relevance 
 and effectiveness. 
 
+## Investors 
+
+- **Venture Capitalists:**
+Venture capitalists provide early-stage funding to help the platform 
+grow, supporting feature development, content acquisition, and user 
+acquisition strategies. VCs are usually interested in high-growth 
+potential and expect returns through future profits or an eventual 
+exit (e.g., IPO, acquisition). 
+
+- **Private Equity Investors:** 
+These investors might invest at a later stage, usually looking for 
+established businesses with steady cash flow. Their role might involve 
+scaling the platform or expanding into new markets. 
+
 
  
