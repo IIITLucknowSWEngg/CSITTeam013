@@ -115,7 +115,7 @@ provides targeted advertising options to brands, based on user
 demographics, preferences, and behaviour, to increase ad relevance 
 and effectiveness. 
 
-## Investors 
+## 4. Investors 
 
 - **Venture Capitalists:**
 Venture capitalists provide early-stage funding to help the platform 
@@ -129,5 +129,26 @@ These investors might invest at a later stage, usually looking for
 established businesses with steady cash flow. Their role might involve 
 scaling the platform or expanding into new markets. 
 
+## 5. Partners
+
+- **Technology Partners:** 
+Tech partners provide the necessary infrastructure for content 
+delivery. This includes cloud service providers like AWS or Google 
+Cloud, which host the platform’s data, manage load balancing, and 
+support video streaming at scale. CDN (Content Delivery Network) 
+providers help in ensuring fast, smooth streaming globally. 
+
+- **Payment Gateways:** 
+Payment gateway partners, like Stripe or PayPal, handle subscription 
+payments, ensuring a seamless and secure checkout process for 
+premium users. Their integration allows users to pay using various 
+methods (credit card, debit card, mobile wallets) across multiple 
+regions. 
+
+- **Telecom Partners:** 
+Telecom companies might bundle the platform's subscription with 
+their services (e.g., mobile plans with free streaming access). This 
+helps expand the user base and drive subscriber growth through 
+partner promotions.
 
  
