@@ -151,4 +151,21 @@ their services (e.g., mobile plans with free streaming access). This
 helps expand the user base and drive subscriber growth through 
 partner promotions.
 
+## 6. Regulatory Bodies 
+
+- **Data Privacy Regulators:** 
+The platform must comply with international and regional data 
+protection regulations, such as GDPR (General Data Protection 
+Regulation) in Europe or CCPA (California Consumer Privacy Act). 
+These rules govern how user data is collected, stored, and used. 
+Ensuring compliance is essential to avoid fines and maintain user 
+trust. 
+
+- **Content Censorship Authorities:** 
+Different regions have varying censorship laws that regulate the kind 
+of content that can be shown. The platform must ensure that it 
+follows regional guidelines on issues like violence, adult content, 
+political messaging, and more. Failure to comply can lead to fines or 
+being banned in certain regions.
+
  
