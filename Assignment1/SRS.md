@@ -186,6 +186,98 @@ The platform will prioritize usability with:
 - *Accessibility*: Subtitles, audio descriptions, and language options.
 - *Advanced Search*: Enhanced search functionalities with filters based on genres, release years, ratings, and more.
 
+---
+
+## 4. External Interface Requirements
+
+### 4.1 User Interface Requirements
+- **Home Page**:  
+  The home page shall display a list of recommended movies, TV shows, and sports events based on the user's viewing history and preferences. A search bar shall be provided to allow users to search for specific content, including movies, TV shows, sports, and live channels. The home page shall also provide access to live sports events, upcoming matches, and channels.
+
+- **Movie/TV Show/Sports Page**:  
+  This page shall display the title, poster, synopsis, rating, and other relevant information such as genre, cast, and release date of the selected movie, TV show, or sports event. A list of related movies, TV shows, or similar sports events shall be shown to enhance the user experience. Live event pages shall display information like live scores, team line-ups, and event duration. Users can select different streaming qualities, ranging from SD to HD, based on their subscription.
+
+- **Watchlist**:  
+  The user interface shall allow users to add movies, TV shows, and sports events to their watchlist. The watchlist shall be accessible from the user's profile page and display all the content added by the user, including upcoming live events. Users shall be able to organize, remove, and manage content in their watchlist.
+
+- **Playback Controls**:  
+  The interface shall provide playback controls for play, pause, stop, rewind, fast-forward, and live stream options. For live sports, additional controls like real-time score updates and key moments (e.g., goal highlights) shall be available. The interface shall include a volume slider, quality selection, and full-screen button. Subtitle and audio track options shall be provided for multi-language support.
+
+- **Profile Management**:  
+  The profile page shall allow users to manage their personal information, viewing preferences, and parental control settings. Users shall be able to switch between different profiles under a single account, each with personalized recommendations and watch history.
+
+- **Notifications and Alerts**:  
+  Users shall receive notifications about new episodes, live sports events, and special promotions. Alerts about subscription renewal, new features, and app updates shall also be displayed within the user interface.
+
+### 4.2 Hardware Interface Requirements
+- **Display**:  
+  The streaming service shall support video playback on various display sizes, including desktop monitors, laptops, tablets, smart TVs, and mobile phones. Video playback shall be optimized for different screen resolutions, such as 480p (SD), 720p (HD), 1080p (Full HD), and 4K Ultra HD, to provide the best viewing experience based on the user's device. The service shall adapt to landscape and portrait modes for mobile and tablet devices.
+
+- **Audio**:  
+  The streaming service shall support stereo and surround sound (5.1, Dolby Atmos) audio playback, depending on the user’s device and speaker system capabilities. It shall support multiple audio codecs like AAC, MP3, and Dolby Digital to ensure compatibility with a broad range of devices. Audio playback shall be synchronized with video across all supported devices.
+
+- **Network**:  
+  The streaming service shall require an internet connection with a minimum bandwidth of 5 Mbps for SD playback, 10 Mbps for HD playback, and 25 Mbps for 4K UHD playback. The service shall support streaming over different network technologies, including Wi-Fi (2.4 GHz and 5 GHz) and cellular networks (3G, 4G, 5G), ensuring availability to users in diverse locations. Adaptive bitrate streaming shall be implemented to adjust video quality automatically based on network speed and reliability.
+
+- **Storage**:  
+  The streaming service shall not require local storage for real-time streaming, as all content shall be streamed from the service's cloud-based servers. The service shall allow users to download content, such as movies and TV shows, for offline playback. Downloaded content shall be stored on the user’s device, requiring sufficient storage capacity depending on the quality of the content (SD/HD/4K). The service shall allow users to manage their offline content and delete it when no longer needed.
+
+### 4.3 Software Interface Requirements
+- **Operating System**:  
+  The streaming service shall support major operating systems, including:
+  - Windows (Windows 10 and above)
+  - macOS (10.13 and above)
+  - iOS (13 and above)
+  - Android (5.0 and above)
+  - Linux (various distributions)  
+  The service shall provide system requirements for each operating system to ensure optimal performance, including minimum hardware specifications and required software versions.
+
+- **Web Browser**:  
+  The service shall support the latest versions of major web browsers, including:
+  - Google Chrome
+  - Mozilla Firefox
+  - Apple Safari
+  - Microsoft Edge  
+  It shall provide guidelines for enabling necessary browser settings and plug-ins to ensure smooth playback and secure streaming. The service shall support HTML5 for video playback to eliminate the need for external plug-ins like Flash.
+
+- **Content Delivery Network (CDN)**:  
+  A Content Delivery Network (CDN) shall be utilized to ensure fast, reliable content delivery by caching movies, TV shows, and live streams on geographically distributed servers. The CDN shall handle adaptive bitrate streaming to provide optimal video quality based on the user’s network speed and stability.
+
+- **Payment Gateway**:  
+  The streaming service shall integrate with secure and reliable payment gateways to handle subscription payments and transactions. The payment gateway shall support multiple payment methods, including:
+  - Credit/Debit Cards
+  - PayPal
+  - UPI
+  - Mobile wallets  
+  Payment transactions shall be encrypted, complying with PCI DSS (Payment Card Industry Data Security Standard) to ensure user data protection.
+
+### 4.4 Communication Interface Requirements
+- **API (Application Programming Interface)**:  
+  The streaming service shall provide an API to allow third-party developers to integrate its content catalog and user management systems into other platforms. The API shall provide access to the movie, TV show, and sports event catalogs, user preferences, watchlists, and account management features. Proper API documentation shall be provided to facilitate integration.
+
+- **Social Media Integration**:  
+  The service shall allow users to share content (movies, shows, sports) on popular social media platforms, including:
+  - Facebook
+  - Twitter
+  - Instagram  
+  Users shall be able to log in using their social media accounts to streamline the registration process.
+
+- **Customer Support**:  
+  The service shall offer customer support through:
+  - Email support
+  - Phone support
+  - Live chat for real-time assistance  
+  A FAQ section and community forum shall be provided for users to troubleshoot common issues independently. A ticketing system shall be available for more complex support cases.
+
+- **Content Providers**:  
+  The streaming service shall establish licensing agreements with major content providers, including:
+  - Movie studios
+  - TV networks
+  - Sports broadcasters  
+  The service shall comply with copyright laws and ensure all streamed content is properly licensed, adhering to regional content distribution rights.
+
+---
+
 ## Performance and System Requirements
 
 ### 5.1 Performance Requirements:
