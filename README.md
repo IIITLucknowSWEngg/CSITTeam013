@@ -6,7 +6,7 @@
 ## PROJECT IDEA : Hotstar Clone
 
 ## PROJECT DESCRIPTION :
-   Digital Nova is a popular streaming platform offering a diverse range of content, including TV shows, movies, live sports, and news. It features content from Disney, Star India, and a variety of international sources, making it a hub for entertainment in multiple languages. Users can access free content with ads, while premium subscribers enjoy ad-free streaming, exclusive content, and early access to TV shows. Digital Nova also provides live sports coverage, such as cricket, football, and Formula 1, which makes it a preferred platform for sports enthusiasts.
+   Nova Digital is a popular streaming platform offering a diverse range of content, including TV shows, movies, live sports, and news. It features content from Disney, Star India, and a variety of international sources, making it a hub for entertainment in multiple languages. Users can access free content with ads, while premium subscribers enjoy ad-free streaming, exclusive content, and early access to TV shows. Nova Digital also provides live sports coverage, such as cricket, football, and Formula 1, which makes it a preferred platform for sports enthusiasts.
    
 ### Key Points :
 
