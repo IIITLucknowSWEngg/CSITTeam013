@@ -1,7 +1,7 @@
 # Project Scope
 
 ## Project Overview
-Hotstar is a premium video streaming platform offering a diverse range of content, including TV shows, movies, live sports, and news. With millions of active users across multiple countries, Hotstar aims to provide a high-quality streaming experience across a variety of devices. The platform supports a subscription-based model alongside a freemium tier, delivering both exclusive and free content. It is designed to cater to regional preferences while ensuring global scalability.
+Nova Digital is a premium video streaming platform offering a diverse range of content, including TV shows, movies, live sports, and news. With millions of active users across multiple countries, Nova Digital` aims to provide a high-quality streaming experience across a variety of devices. The platform supports a subscription-based model alongside a freemium tier, delivering both exclusive and free content. It is designed to cater to regional preferences while ensuring global scalability.
 
 ## Included Features:
 
