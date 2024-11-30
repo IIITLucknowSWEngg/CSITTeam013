@@ -37,7 +37,9 @@ SubscriptionSystem --> PaymentProcessor : Handle Payments
 ```
 
 **2. Container Diagram**
-![Container Diagram][assets/container_diagram.png]
+![Container Diagram][assets/Container_diagram.png]
+
+```plantuml
 @startuml
 title Container Diagram - Nova Digital
 
@@ -74,3 +76,5 @@ ContentService --> ContentDB : Store/Fetch Content
 SubscriptionService --> SubDB : Manage Subscriptions
 FeedbackService --> ContentDB : Store Feedback
 @enduml
+
+```
