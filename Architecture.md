@@ -78,3 +78,48 @@ FeedbackService --> ContentDB : Store Feedback
 @enduml
 
 ```
+
+**3. Component Diagram**
+*3.1 Component Diagram for users*
+![Component Diagram](assets/Component_diagram(for_users).png)
+```plantuml
+@startuml
+title Component Diagram - User Interactions in Nova Digital
+
+component "Web/Mobile App" as App #lightblue
+component "API Gateway" as APIGateway #lightgreen
+component "Authentication Service" as AuthService #lightyellow
+component "Content Service" as ContentService #lightyellow
+component "Subscription Service" as SubscriptionService #lightyellow
+component "Feedback Service" as FeedbackService #lightyellow
+component "Recommendation Engine" as RecommendationEngine #lightyellow
+
+database "User Database" as UserDB #lightpink
+database "Content Database" as ContentDB #lightpink
+database "Subscription Database" as SubDB #lightpink
+
+cloud "External Services" {
+    component "CDN" as CDN #lightgray
+    component "Payment Processor" as PaymentService #lightgray
+}
+
+App --> APIGateway : API Requests
+APIGateway --> AuthService : Authenticate User
+AuthService --> UserDB : User Data
+
+APIGateway --> ContentService : Fetch Content
+ContentService --> ContentDB : Media Metadata
+ContentService --> CDN : Stream Media
+
+APIGateway --> SubscriptionService : Manage Subscription
+SubscriptionService --> SubDB : Subscription Data
+SubscriptionService --> PaymentService : Process Payments
+
+APIGateway --> FeedbackService : Submit Feedback
+FeedbackService --> ContentDB : Store Feedback
+
+APIGateway --> RecommendationEngine : Get Recommendations
+RecommendationEngine --> ContentDB : Analyze User Preferences
+
+@enduml
+```
