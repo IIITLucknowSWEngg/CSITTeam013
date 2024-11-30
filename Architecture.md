@@ -123,3 +123,48 @@ RecommendationEngine --> ContentDB : Analyze User Preferences
 
 @enduml
 ```
+
+*3.2 Component Diagram for Admins*
+![Component Diagram](assets/Component_diagram(for_admins).png)
+
+```plantuml
+@startuml
+title Component Diagram - Admin Interactions in Nova Digital
+
+component "Admin Dashboard" as AdminDashboard #lightblue
+component "API Gateway" as APIGateway #lightgreen
+component "Authentication Service" as AuthService #lightyellow
+component "User Management Service" as UserService #lightyellow
+component "Content Management Service" as ContentService #lightyellow
+component "Subscription Management Service" as SubscriptionService #lightyellow
+component "Reporting Service" as ReportingService #lightyellow
+
+database "User Database" as UserDB #lightpink
+database "Content Database" as ContentDB #lightpink
+database "Subscription Database" as SubDB #lightpink
+
+cloud "External Services" {
+    component "Payment Processor" as PaymentService #lightgray
+}
+
+AdminDashboard --> APIGateway : Admin Requests
+APIGateway --> AuthService : Authenticate Admin
+AuthService --> UserDB : Verify Admin Credentials
+
+APIGateway --> UserService : Manage Users
+UserService --> UserDB : Create/Update/Delete Users
+
+APIGateway --> ContentService : Manage Content
+ContentService --> ContentDB : Add/Update/Delete Content
+
+APIGateway --> SubscriptionService : Manage Subscriptions
+SubscriptionService --> SubDB : Create/Update/Delete Subscriptions
+SubscriptionService --> PaymentService : Process Payments
+
+APIGateway --> ReportingService : Generate Reports
+ReportingService --> UserDB : Fetch User Data
+ReportingService --> ContentDB : Fetch Content Data
+ReportingService --> SubDB : Fetch Subscription Data
+@enduml
+
+```
