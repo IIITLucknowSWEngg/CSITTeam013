@@ -3,7 +3,6 @@
 
 ```plantuml
 @startuml
-' Define External Actors
 actor "User" as User
 actor "Admin" as Admin
 actor "Content Creator" as ContentCreator
@@ -11,7 +10,6 @@ actor "Payment Processor" as PaymentProcessor
 actor "CDN Server" as CDN
 actor "Recommendation Engine" as RecommendationEngine
 
-' Define System
 package "Nova Digital System" {
     rectangle "User Authentication" as Authentication
     rectangle "Content Browsing & Streaming" as ContentSystem
@@ -20,7 +18,6 @@ package "Nova Digital System" {
     rectangle "Admin Dashboard" as AdminDashboard
 }
 
-' Relationships between Actors and the System
 User --> Authentication : Sign Up / Login
 User --> ContentSystem : Browse / Watch Content
 User --> SubscriptionSystem : Manage Subscription
