@@ -1,6 +1,7 @@
 **1. System Context Diagram**
 ![System Context Diagram](assets/System_context_diagram.png)
 
+```plantuml
 @startuml
 ' Define External Actors
 actor "User" as User
@@ -36,3 +37,4 @@ ContentSystem --> RecommendationEngine : Fetch Suggestions
 
 SubscriptionSystem --> PaymentProcessor : Handle Payments
 @enduml
+```
