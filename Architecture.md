@@ -168,3 +168,51 @@ ReportingService --> SubDB : Fetch Subscription Data
 @enduml
 
 ```
+
+**4. Deployment Diagram**
+![Deployment Diagram](assets/deployment_diagram.png)
+
+```plantuml
+@startuml
+title Deployment Diagram - Nova Digital
+
+node "Web/Mobile Client" as Client {
+    artifact "Web App" as WebApp
+    artifact "Mobile App" as MobileApp
+}
+
+node "API Server" as APIServer {
+    artifact "API Gateway" as APIGateway
+    artifact "Auth Service" as AuthService
+    artifact "Content Service" as ContentService
+    artifact "Subscription Service" as SubscriptionService
+    artifact "Recommendation Engine" as RecommendationEngine
+}
+
+node "Database Server" as DBServer {
+    artifact "User Database" as UserDB
+    artifact "Content Database" as ContentDB
+    artifact "Subscription Database" as SubDB
+}
+
+node "External Services" as ExternalServices {
+    artifact "CDN" as CDN
+    artifact "Payment Processor" as PaymentProcessor
+}
+
+Client --> APIServer : API Requests (Web/Mobile App)
+APIServer --> AuthService : Authentication Requests
+APIServer --> ContentService : Fetch Content
+APIServer --> SubscriptionService : Manage Subscriptions
+APIServer --> RecommendationEngine : Get Recommendations
+APIServer --> CDN : Stream Content
+APIServer --> PaymentProcessor : Process Payments
+
+AuthService --> UserDB : Store/Retrieve User Data
+ContentService --> ContentDB : Store/Retrieve Content Data
+SubscriptionService --> SubDB : Store/Retrieve Subscription Data
+
+CDN --> ContentDB : Retrieve Media for Streaming
+PaymentProcessor --> SubDB : Process Payments
+@enduml
+```
