@@ -37,7 +37,7 @@ SubscriptionSystem --> PaymentProcessor : Handle Payments
 ```
 
 **2. Container Diagram**
-![Container Diagram][assets/Container_diagram.png]
+![Container Diagram](assets/Container_diagram.png)
 
 ```plantuml
 @startuml
