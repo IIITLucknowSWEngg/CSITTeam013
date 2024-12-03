@@ -1,5 +1,5 @@
 ## 1. System Context Diagram
-![System Context Diagram](assets/System_context_diagram.png)
+![System Context Diagram](../assets/System_context_diagram.png)
 
 ```plantuml
 @startuml
@@ -37,7 +37,7 @@ SubscriptionSystem --> PaymentProcessor : Handle Payments
 ```
 
 ## 2. Container Diagram
-![Container Diagram](assets/Container_diagram.png)
+![Container Diagram](../assets/Container_diagram.png)
 
 ```plantuml
 @startuml
@@ -82,7 +82,7 @@ FeedbackService --> ContentDB : Store Feedback
 ## 3. Component Diagram
 
 ### 3.1 Component Diagram for users
-![Component Diagram](assets/Component_diagram(for_users).png)
+![Component Diagram](../assets/Component_diagram(for_users).png)
 ```plantuml
 @startuml
 title Component Diagram - User Interactions in Nova Digital
@@ -126,7 +126,7 @@ RecommendationEngine --> ContentDB : Analyze User Preferences
 ```
 
 ### 3.2 Component Diagram for Admins
-![Component Diagram](assets/Component_diagram(for_admins).png)
+![Component Diagram](../assets/Component_diagram(for_admins).png)
 
 ```plantuml
 @startuml
@@ -171,7 +171,7 @@ ReportingService --> SubDB : Fetch Subscription Data
 ```
 
 ## 4. Deployment Diagram
-![Deployment Diagram](assets/deployment_diagram.png)
+![Deployment Diagram](../assets/deployment_diagram.png)
 
 ```plantuml
 @startuml
