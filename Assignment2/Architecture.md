@@ -1,4 +1,4 @@
-**1. System Context Diagram**
+## 1. System Context Diagram
 ![System Context Diagram](assets/System_context_diagram.png)
 
 ```plantuml
@@ -36,7 +36,7 @@ SubscriptionSystem --> PaymentProcessor : Handle Payments
 @enduml
 ```
 
-**2. Container Diagram**
+## 2. Container Diagram
 ![Container Diagram](assets/Container_diagram.png)
 
 ```plantuml
@@ -79,8 +79,9 @@ FeedbackService --> ContentDB : Store Feedback
 
 ```
 
-**3. Component Diagram**
-*3.1 Component Diagram for users*
+## 3. Component Diagram
+
+### 3.1 Component Diagram for users
 ![Component Diagram](assets/Component_diagram(for_users).png)
 ```plantuml
 @startuml
@@ -124,7 +125,7 @@ RecommendationEngine --> ContentDB : Analyze User Preferences
 @enduml
 ```
 
-*3.2 Component Diagram for Admins*
+### 3.2 Component Diagram for Admins
 ![Component Diagram](assets/Component_diagram(for_admins).png)
 
 ```plantuml
@@ -169,7 +170,7 @@ ReportingService --> SubDB : Fetch Subscription Data
 
 ```
 
-**4. Deployment Diagram**
+## 4. Deployment Diagram
 ![Deployment Diagram](assets/deployment_diagram.png)
 
 ```plantuml
