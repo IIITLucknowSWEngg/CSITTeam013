@@ -124,7 +124,7 @@ describe('User Login', function () {
 }); 
 ```
 
-## **Test Case 2: Search Functionality**
+### **Test Case 2: Search Functionality**
 ```markdown
 Feature: Search Functionality
   Scenario: Search returns relevant results
@@ -154,7 +154,7 @@ describe('Search Functionality', function () {
 });
 ```
 
-**Test Case 3: Video Playback**
+### **Test Case 3: Video Playback**
 
 ```markdown
 Feature: Video Playback
@@ -183,7 +183,7 @@ describe('Video Playback', function () {
 
 ```
 
-**Test Case 4: Subscription Activation**
+### **Test Case 4: Subscription Activation**
 
 ```markdown
 Feature: Subscription Activation
@@ -228,3 +228,7 @@ The following references were used during the development and testing of the Hot
 **Chai Assertion Library:**
 - Chai.js Documentation
 - Used for implementing assertions in automated testing scripts.
+
+
+**ChatGPT by OpenAI:**
+- Assistance in creating the outline for the software testing document along with codes.
