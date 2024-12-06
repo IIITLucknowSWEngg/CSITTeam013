@@ -222,13 +222,10 @@ The following references were used during the development and testing of the Hot
 **Behavior-Driven Development (BDD):**
 - Cucumber Documentation on BDD
 - Cucumber eBooks
-- Referenced for writing Gherkin-based test cases to ensure test clarity and alignment with user stories.
-
 
 **Chai Assertion Library:**
 - Chai.js Documentation
 - Used for implementing assertions in automated testing scripts.
-
 
 **ChatGPT by OpenAI:**
 - Assistance in creating the outline for the software testing document along with codes.
