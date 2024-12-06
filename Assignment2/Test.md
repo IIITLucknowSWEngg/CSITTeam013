@@ -1,5 +1,6 @@
 # Software Testing Document for Nova Digital:
 
+## Test Plan
 ### Test Plan Identifier
 **TP-HotstarClone-001**
 This identifier is unique to the Hotstar website clone project for tracking purposes. 
@@ -87,14 +88,14 @@ The scope includes testing both functional and non-functional requirements of th
 ### **Test Case 1: User Login**
 
 ```markdown
-* Feature: User Login
-* Scenario: Successful login with valid credentials
-    * Given the user is on the login page
-    * When the user enters "user@example.com" in the email field
-    * And the user enters "Password123" in the password field
-    * And the user clicks the "Login" button
-    * Then the user should be redirected to the homepage
-    * And the username should appear in the header
+Feature: User Login
+  Scenario: Successful login with valid credentials
+    Given the user is on the login page
+    When the user enters "user@example.com" in the email field
+    And the user enters "Password123" in the password field
+    And the user clicks the "Login" button
+    Then the user should be redirected to the homepage
+    And the username should appear in the header
 ```
 
 **Chai Test Code:**
@@ -125,12 +126,12 @@ describe('User Login', function () {
 
 ## **Test Case 2: Search Functionality**
 ```markdown
-- Feature: Search Functionality
-  - Scenario: Search returns relevant results
-    - Given the user is on the homepage
-    - When the user enters "Marvel" in the search bar
-    - And the user clicks the "Search" button
-    - Then the search results should display items related to "Marvel"
+Feature: Search Functionality
+  Scenario: Search returns relevant results
+    Given the user is on the homepage
+    When the user enters "Marvel" in the search bar
+    And the user clicks the "Search" button
+    Then the search results should display items related to "Marvel"
 ```
 
 **Chai Test Code:**
@@ -155,13 +156,13 @@ describe('Search Functionality', function () {
 
 **Test Case 3: Video Playback**
 
-```console
-- Feature: Video Playback
-  - Scenario: Successful video playback
-    - Given the user is on a video detail page
-    - When the user clicks the "Play" button
-    - Then the video should start playing
-    - And the play button should change to a pause button
+```markdown
+Feature: Video Playback
+  Scenario: Successful video playback
+    Given the user is on a video detail page
+    When the user clicks the "Play" button
+    Then the video should start playing
+    And the play button should change to a pause button
 ```
 
 
@@ -212,19 +213,18 @@ describe('Subscription Activation', function () {
 });
 ```
 
-## 7.1 References
+## References
 The following references were used during the development and testing of the Hotstar clone project:
 
 **IEEE-829-2008 Standard for Software Test Documentation:**
-
-- Link to IEEE Standard
 - Used as a guideline for creating the software testing document.
 
 **Behavior-Driven Development (BDD):**
 - Cucumber Documentation on BDD
 - Cucumber eBooks
 - Referenced for writing Gherkin-based test cases to ensure test clarity and alignment with user stories.
-**Chai Assertion Library:**
 
+
+**Chai Assertion Library:**
 - Chai.js Documentation
 - Used for implementing assertions in automated testing scripts.
