@@ -168,4 +168,9 @@ follows regional guidelines on issues like violence, adult content,
 political messaging, and more. Failure to comply can lead to fines or 
 being banned in certain regions.
 
- 
+## 7. Recordings of some stakeholders
+
+<audio controls>
+  <source src="../assets/BackendDeveloperrecord.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
