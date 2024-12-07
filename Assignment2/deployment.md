@@ -1,1 +1,1 @@
-![deployment](assets/deployment_diagram.png)
+![deployment](../assets/deployment_diagram.png)
