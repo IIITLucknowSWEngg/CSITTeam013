@@ -2,12 +2,12 @@
 
 ## Test Plan
 ### Test Plan Identifier
-**TP-HotstarClone-001**
-This identifier is unique to the Hotstar website clone project for tracking purposes. 
+**TP-NovaDigital-001**
+This identifier is unique to the Nova Digital website project for tracking purposes. 
 
 ### Introduction
 **Purpose**
-The purpose of this test plan is to validate the functionality, usability, and performance of the Hotstar clone website. The tests will ensure that all core features—like video playback, user authentication, search functionality, and subscription management—perform as expected.
+The purpose of this test plan is to validate the functionality, usability, and performance of the Nova Digital website. The tests will ensure that all core features—like video playback, user authentication, search functionality, and subscription management—perform as expected.
 
 **Scope**
 The scope includes testing both functional and non-functional requirements of the website, such as:
@@ -20,7 +20,7 @@ The scope includes testing both functional and non-functional requirements of th
 **Objectives**
 - Ensure all user-facing features work seamlessly.
 - Identify and address defects before production.
-- Deliver a high-quality, bug-free website clone of Hotstar.
+- Deliver a high-quality, bug-free website of Nova Digital.
 
 ### Test Items
 - Authentication System: Login, Registration, Logout
@@ -105,7 +105,7 @@ const { browser, element, by } = require('protractor');
 
 describe('User Login', function () {
     it('should login successfully with valid credentials', async function () {
-        await browser.get('https://hotstar-clone.com/login');
+        await browser.get('https://Nova-Digital.com/login');
         const emailField = element(by.id('email'));
         const passwordField = element(by.id('password'));
         const loginButton = element(by.css('.login-button'));
@@ -118,7 +118,7 @@ describe('User Login', function () {
         const currentUrl = await browser.getCurrentUrl();
         const usernameText = await usernameHeader.getText();
 
-        expect(currentUrl).to.equal('https://hotstar-clone.com/home');
+        expect(currentUrl).to.equal('https://Nova-Digital.com/home');
         expect(usernameText).to.equal('Welcome, User');
     });
 }); 
@@ -138,7 +138,7 @@ Feature: Search Functionality
 ```javascript
 describe('Search Functionality', function () {
     it('should return relevant results for a search term', async function () {
-        await browser.get('https://hotstar-clone.com');
+        await browser.get('https://Nova-Digital.com');
         const searchBar = element(by.id('search'));
         const searchButton = element(by.css('.search-button'));
 
@@ -170,7 +170,7 @@ Feature: Video Playback
 ```javascript
 describe('Video Playback', function () {
     it('should start playing the video when play button is clicked', async function () {
-        await browser.get('https://hotstar-clone.com/video/123');
+        await browser.get('https://Nova-Digital.com/video/123');
         const playButton = element(by.css('.play-button'));
         const videoPlayer = element(by.tagName('video'));
 
@@ -199,7 +199,7 @@ Feature: Subscription Activation
 ```javascript
 describe('Subscription Activation', function () {
     it('should activate subscription upon successful payment', async function () {
-        await browser.get('https://hotstar-clone.com/subscribe');
+        await browser.get('https://Nova-Digital.com/subscribe');
         const premiumPlanButton = element(by.css('.premium-plan'));
         const paymentButton = element(by.css('.pay-button'));
         const subscriptionStatus = element(by.css('.subscription-status'));
@@ -214,7 +214,7 @@ describe('Subscription Activation', function () {
 ```
 
 ## References
-The following references were used during the development and testing of the Hotstar clone project:
+The following references were used during the development and testing of the Nova Digital project:
 
 **IEEE-829-2008 Standard for Software Test Documentation:**
 - Used as a guideline for creating the software testing document.
