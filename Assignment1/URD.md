@@ -1,10 +1,10 @@
-# **Introduction**
+# Introduction
 
 NOVA Digital is an online streaming platform that offers a wide range of content, including movies, TV shows, documentaries, and original series, in multiple languages. The platform provides users with a personalized viewing experience and allows them to stream content on various devices, including smartphones, tablets, smart TVs, and computers.
 
 Overall, the objective of NOVA Digital is to deliver an engaging and immersive entertainment experience through high-quality content, seamless navigation, and personalized recommendations.
 
-### **Why would you as a user love streaming with NOVA Digital?**
+### Why would you as a user love streaming with NOVA Digital?
 
 1. Vast Content Library: Access to a wide variety of genres, including movies, TV shows, documentaries, and exclusive originals.
 2. Personalized Recommendations: Using advanced algorithms, NOVA Digital recommends content tailored to your viewing preferences and habits.
@@ -12,16 +12,16 @@ Overall, the objective of NOVA Digital is to deliver an engaging and immersive e
 4. Offline Viewing: Download shows and movies to watch offline, making it convenient for travel or when internet access is limited.
 5. No Ads: Enjoy an uninterrupted, ad-free experience on premium plans.
 
-## **User Constraints and Assumptions**
+## User Constraints and Assumptions
 
-### **Constraints:**
+### Constraints:
 
 - Content Availability: Not all content may be available in every region due to licensing restrictions.
 - Device Compatibility: Users may experience limitations based on their device's operating system or version, affecting compatibility with the platform.
 - Internet Access: A stable internet connection is required for smooth streaming, particularly for high-definition and 4K content.
 - Subscription Requirement: Most content is behind a paywall, and users need a valid subscription to access the platform's full library.
 
-### **Assumptions:**
+### Assumptions:
 
 - User Internet Connectivity: It is assumed that users have access to a reliable and fast internet connection for uninterrupted streaming.
 - User Device Capability: NOVA Digital assumes that users' devices (smartphones, tablets, TVs, etc.) are compatible with the platform's technical requirements.
@@ -29,7 +29,7 @@ Overall, the objective of NOVA Digital is to deliver an engaging and immersive e
 - User Willingness to Subscribe: It is assumed that users are willing to subscribe to access premium content.
 
 
-## **User Requirements:**
+## User Requirements:
 
 1. Content Selection: Users should be able to browse through a large library of movies, TV shows, and original series based on genres, languages, popularity, and personal recommendations. They can also search for specific titles using a search bar.
    
@@ -58,7 +58,7 @@ Overall, the objective of NOVA Digital is to deliver an engaging and immersive e
 13. Notification and Alerts: Users should receive notifications about new releases, expiring content, or recommendations based on their preferences.
 
 
-## **User Flow**
+## User Flow
 Persona - Aarav is a young professional who enjoys binge-watching movies and TV series in his spare time. He subscribes to NOVA Digital for its wide content library and seamless user experience.
 
 1. Sign Up/Log In: Aarav opens the NOVA Digital website or app, where he is greeted by a splash screen and then prompted to sign in. As a first-time user, Aarav opts to sign up by entering his name, email, and password. Alternatively, he can sign up using social media or Google accounts.
