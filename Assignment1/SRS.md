@@ -62,11 +62,11 @@
 
 ## 1. Introduction
 
-This section introduces the NOVA Digital project, outlining the overall purpose of the platform, the audience it targets, and the expected scope of the project.
+This section introduces the *NOVA Digital project*, outlining the overall purpose of the platform, the audience it targets, and the expected scope of the project.
 
 ### 1.1 Purpose
 
-The goal of NOVA DIGITAL is to deliver a comprehensive digital streaming platform that provides a diverse library of content including:
+The goal of NOVA DIGITAL is to deliver a *comprehensive digital streaming platform* that provides a diverse library of content including:
 - **Movies**
 - **TV Shows**
 - **Live Sports**
