@@ -6,15 +6,14 @@
 ## PROJECT IDEA : Nova Digital
 
 ## PROJECT DESCRIPTION :
-   Nova Digital is a popular streaming platform offering a diverse range of content, including TV shows, movies, live sports, and news. It features content from Disney, Star India, and a variety of international sources, making it a hub for entertainment in multiple languages. Users can access free content with ads, while premium subscribers enjoy ad-free streaming, exclusive content, and early access to TV shows. Nova Digital also provides live sports coverage, such as cricket, football, and Formula 1, which makes it a preferred platform for sports enthusiasts.
+   Nova Digital is a popular streaming platform offering a diverse range of content, including TV shows, movies, live sports, and news. It features content from a variety of international sources, making it a hub for entertainment in multiple languages. Users can access free content with ads, while premium subscribers enjoy ad-free streaming, exclusive content, and early access to TV shows. Nova Digital also provides live sports coverage, such as cricket, football, and Formula 1, which makes it a preferred platform for sports enthusiasts.
    
 ### Key Points :
 
  1. Offers content in multiple languages (regional and international).
  2. Live sports streaming, including cricket, football, and F1.
  3. Free and premium subscription models.
- 4. Partnership with Disney for exclusive content.
- 5. Available on multiple devices like smartphones, tablets, and smart TVs.
+ 4. Available on multiple devices like smartphones, tablets, and smart TVs.
 
 ## TEAM MEMBERS :
 |S.No.            |Name                     |Roll No.              |GitHub Id                               |GitHub Mail Id                                             |
