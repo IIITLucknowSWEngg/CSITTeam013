@@ -55,7 +55,6 @@ Nova Digital is a premium video streaming platform offering a diverse range of c
 
 - **User-generated Content Creation:** No features for users to upload or create content (e.g., no video uploads).
 - **AR/VR Integration:** No support for augmented reality (AR) or virtual reality (VR) content for this phase.
-- **Third-party Advertisements:** No integration of ad platforms (if focus is on subscription model over ad revenue).
 - **Advanced Sports Analytics:** No inclusion of interactive or predictive sports analytics features during live events.
 - **Podcast or Audio Streaming:** No podcast or exclusive audio streaming feature included at this stage.
 
