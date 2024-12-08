@@ -1,6 +1,6 @@
 ---
 
-# Hotstar System Design Document  
+# Nova Digital System Design Document  
 
 ## 1. Introduction  
 
