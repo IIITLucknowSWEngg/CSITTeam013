@@ -26,10 +26,8 @@
 
 5. [Deployment Architecture](#5-deployment-architecture)
    - [5.1 Overview](#51-overview)
-   - [5.2 Client Devices](#52-client-devices)
-   - [5.3 Content Delivery Networks (CDNs)](#53-content-delivery-networks-cdns)
-   - [5.4 Backend Services](#54-backend-services)
-
+   - [5.2 Deployment Diagram ](#52-client-devices)
+  
 6. [Data Design](#6-data-design)
    - [6.1 Database](#61-database)
    - [6.2 Data Processing](#62-data-processing)
@@ -195,7 +193,7 @@ The deployment architecture of NOVA Digital involves a distributed system setup 
   - These services are typically deployed on cloud platforms such as Amazon Web Services (AWS) or other cloud providers.
   - Designed to be scalable and resilient, capable of handling a large number of concurrent users and high traffic volumes.
 
-- **Microservices Architecture:**
+- ** Microservices Architecture:**
   - NOVA Digital adopts a microservices architecture, breaking down the system into small, loosely coupled services that can be developed, deployed, and scaled independently.
   - Each microservice focuses on a specific business capability and communicates with others through well-defined APIs and protocols.
   - This architecture promotes flexibility, scalability, and fault isolation, allowing Nova Digital to evolve and update its system components without affecting the entire system.
