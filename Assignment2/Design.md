@@ -54,10 +54,10 @@
 ## 1. Introduction  
 
 ### 1.1 Purpose  
-The purpose of this NOVA DIGITAL design document is to provide a comprehensive overview of the design principles and architecture for the Hotstar software system. It serves as a guide for the development team in creating a robust, scalable, and maintainable system. The document outlines the high-level design of the system, key components, and design principles to ensure clarity and consistency during the development process.  
+The purpose of this NOVA Digital design document is to provide a comprehensive overview of the design principles and architecture for the NOVA Digital software system. It serves as a guide for the development team in creating a robust, scalable, and maintainable system. The document outlines the high-level design of the system, key components, and design principles to ensure clarity and consistency during the development process.  
 
 ### 1.2 Scope  
-The Hotstar design document covers the following aspects of the software system:  
+The Nova Digital design document covers the following aspects of the software system:  
 - **High-Level Architectural Overview**: Describing the overall structure and components of the system.  
 - **Design Principles**: Identifying and applying relevant design principles for scalability and performance.  
 - **Key Modules and Components**: Providing an overview of the major functional components of the system.  
@@ -102,17 +102,17 @@ The system context includes:
 ## 3. Architectural Design  
 
 ### 3.1 Architectural Overview  
-Nova employs a **microservices architecture**, enabling scalability and modularity. The platform relies on:  
+NOVA Digital employs a **microservices architecture**, enabling scalability and modularity. The platform relies on:  
 - **AWS and Nova Digital CDN**: Collaboratively handling backend services and video streaming.  
 - **ReactJS Frontend**: Ensures modularity, performance, and startup speed.  
 
 #### Core Components:  
 1. **Client**: Devices like smartphones, TVs, and laptops used to browse and stream content.  
-2. **Nova Digital CDN**: Distributes video content efficiently by delivering streams from geographically proximate servers.  
+2. **NOVA Digital CDN**: Distributes video content efficiently by delivering streams from geographically proximate servers.  
 3. **Backend Services**: Responsible for user authentication, content recommendations, and subscription handling.  
 
 ### Onboarding a Movie  
-- Nova Digital performs **video transcoding** to support multiple resolutions and formats.  
+- NOVA Digital performs **video transcoding** to support multiple resolutions and formats.  
 - Transcoded files are distributed to CDN servers globally.  
 - AWS manages login, billing, and recommendation tasks, ensuring seamless playback.  
 
@@ -163,11 +163,11 @@ Nova employs a **microservices architecture**, enabling scalability and modulari
 
 ### **5.1 Overview**
 
-The deployment architecture of Nova Digital involves a distributed system setup that encompasses various components and infrastructure to ensure efficient content delivery and availability. Here are the key elements of the deployment architecture:
+The deployment architecture of NOVA Digital involves a distributed system setup that encompasses various components and infrastructure to ensure efficient content delivery and availability. Here are the key elements of the deployment architecture:
 
 - **Client Devices:**
   - Client devices include smartphones, tablets, smart TVs, web browsers, and other devices through which users access the Nova Digital platform.
-  - Nova Digital supports a wide range of devices, each with different resolutions, screen sizes, and capabilities.
+  - NOVA Digital supports a wide range of devices, each with different resolutions, screen sizes, and capabilities.
 
 - **Content Delivery Networks (CDNs):**
   - CDNs play a crucial role in the deployment architecture by distributing content geographically closer to the end-users, reducing latency and improving streaming performance.
@@ -175,7 +175,7 @@ The deployment architecture of Nova Digital involves a distributed system setup 
   - These servers store and deliver the most popular and frequently accessed content, reducing the load on the backend infrastructure.
 
 - **Backend Services:**
-  - The backend services form the core of Nova Digital's deployment architecture, handling various functionalities such as:
+  - The backend services form the core of NOVA Digital's deployment architecture, handling various functionalities such as:
     - User management
     - Content management
     - Recommendation engines
@@ -185,7 +185,7 @@ The deployment architecture of Nova Digital involves a distributed system setup 
   - Designed to be scalable and resilient, capable of handling a large number of concurrent users and high traffic volumes.
 
 - **Microservices Architecture:**
-  - Nova Digital adopts a microservices architecture, breaking down the system into small, loosely coupled services that can be developed, deployed, and scaled independently.
+  - NOVA Digital adopts a microservices architecture, breaking down the system into small, loosely coupled services that can be developed, deployed, and scaled independently.
   - Each microservice focuses on a specific business capability and communicates with others through well-defined APIs and protocols.
   - This architecture promotes flexibility, scalability, and fault isolation, allowing Nova Digital to evolve and update its system components without affecting the entire system.
 
@@ -194,15 +194,15 @@ The deployment architecture of Nova Digital involves a distributed system setup 
   - Auto scaling mechanisms automatically adjust the number of server instances based on the current demand, scaling up or down to accommodate traffic fluctuations.
 
 - **Data Storage and Databases:**
-  - Nova Digital utilizes various types of databases and data storage systems to manage user profiles, content metadata, viewing history, and other data.
+  - NOVA Digital utilizes various types of databases and data storage systems to manage user profiles, content metadata, viewing history, and other data.
   - Relational databases (e.g., MySQL, PostgreSQL) and NoSQL databases (e.g., Cassandra, Amazon DynamoDB) are used based on specific data requirements.
   - Data is often replicated across multiple data centers to ensure data availability, resilience, and disaster recovery.
 
 - **Monitoring and Logging:**
-  - Nova Digital incorporates robust monitoring and logging systems to track system performance, detect issues, and troubleshoot problems.
+  - NOVA Digital incorporates robust monitoring and logging systems to track system performance, detect issues, and troubleshoot problems.
   - Various monitoring tools and services are employed to collect metrics, log events, and generate alerts for timely response and system optimization.
 
-The deployment architecture of Nova Digital is designed to provide a seamless streaming experience, ensuring content availability, scalability, and performance across a diverse range of client devices. It leverages CDNs, microservices, load balancing, auto scaling, and cloud infrastructure to deliver content efficiently and handle high user demands.
+The deployment architecture of NOVA Digital is designed to provide a seamless streaming experience, ensuring content availability, scalability, and performance across a diverse range of client devices. It leverages CDNs, microservices, load balancing, auto scaling, and cloud infrastructure to deliver content efficiently and handle high user demands.
 
 ---
 
@@ -210,12 +210,12 @@ The deployment architecture of Nova Digital is designed to provide a seamless st
 
 ### **6.1 Database**
 
-Nova Digital uses two different databases:
+NOVA Digital uses two different databases:
 
 1. **MySQL (RDBMS):**
-   - Nova Digital saves data like billing information, user information, and transaction information in MySQL because it needs ACID compliance.
+   - NOVA Digital saves data like billing information, user information, and transaction information in MySQL because it needs ACID compliance.
    - **EC2 Deployed MySQL:**
-     - Nova Digital has a master-master setup for MySQL, deployed on Amazon’s large EC2 instances using InnoDB.
+     - NOVA Digital has a master-master setup for MySQL, deployed on Amazon’s large EC2 instances using InnoDB.
      - Follows a **“Synchronous replication protocol”**:
        - Writes to the primary master node are replicated to a secondary master node.
        - Acknowledgment is sent only after both nodes confirm the write.
@@ -249,7 +249,7 @@ Nova Digital uses two different databases:
 
 ### **Recommendation System**
 
-Nova Digital's recommendation system predicts user interests based on:
+NOVA Digital's recommendation system predicts user interests based on:
 
 - User interaction with the platform (viewing history, ratings).
 - Metadata of watched content (genres, actors, etc.).
@@ -280,7 +280,7 @@ The data flow within **Nova Digital** is critical for ensuring high performance,
 4. **Data Streaming:**
    - Real-time analytics data, such as user interactions, viewing patterns, and device health, is transmitted to the backend for processing and analytics.
 
-This flow ensures that **Nova Digital** operates efficiently, providing users with a seamless experience while maintaining backend stability.
+This flow ensures that **NOVA Digital** operates efficiently, providing users with a seamless experience while maintaining backend stability.
 
 ---
 
@@ -290,7 +290,7 @@ This flow ensures that **Nova Digital** operates efficiently, providing users wi
 
 #### **Lo-Fi Wireframes**
 
-The wireframes are designed to map the overall UI layout and show all essential screen components needed for **Nova Digital**. These screens represent user journeys such as logging in, content discovery, and video playback:
+The wireframes are designed to map the overall UI layout and show all essential screen components needed for **NOVA Digital**. These screens represent user journeys such as logging in, content discovery, and video playback:
 
 1. **Input Controls:**
    - **Dropdowns, text fields, and radio buttons** allow users to filter content, input text, or select preferences.
