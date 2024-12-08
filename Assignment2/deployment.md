@@ -1,1 +1,0 @@
-![deployment](../assets/deployment_diagram.png)
