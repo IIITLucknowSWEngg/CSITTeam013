@@ -26,21 +26,6 @@
 |6.               |Sanchita Patel           |LCS2023022            |sanchitapatel29                         |sanchitapatel29@gmail.com                                  |
 |7.               |Snehal Taori             |LCS2023008            |snehaltaori                             |snehaltaori14@gmail.com                                    |
 
-# NOVA Digital Use Case Repository
-
-This repository contains the implementation and test scripts for key use cases of the NOVA Digital streaming platform.
-
-## Use Cases Implemented
-
-1. Watching a Live Sports Event
-2. Offline Viewing of Movies
-
-## How to Run
-
-1. Clone the repository.
-2. Install dependencies using `pip install -r requirements.txt`.
-3. Run the use cases using the scripts in `src/app/`.
-4. Execute tests using `pytest src/tests/`.
 
 ## License
 
