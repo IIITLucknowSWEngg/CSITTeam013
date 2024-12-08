@@ -37,7 +37,7 @@ The system context includes:
 - **User Devices**: Smartphones, tablets, smart TVs, and web browsers through which users access the platform.  
 - **Content Providers**: Third-party providers and original productions contributing content to the platform.  
 - **Payment Gateways**: External service providers managing subscription payments and transactions.  
-- **CDNs**: Hotstar's proprietary and third-party networks ensuring low-latency streaming.  
+- **CDNs**: Nova Digital's proprietary and third-party networks ensuring low-latency streaming.  
 - **Social Media Platforms**: Integration enabling users to share their viewing activities and recommendations.  
 
 ### 2.2 Key Components  
@@ -54,16 +54,16 @@ The system context includes:
 
 ### 3.1 Architectural Overview  
 Nova employs a **microservices architecture**, enabling scalability and modularity. The platform relies on:  
-- **AWS and Hotstar CDN**: Collaboratively handling backend services and video streaming.  
+- **AWS and Nova Digital CDN**: Collaboratively handling backend services and video streaming.  
 - **ReactJS Frontend**: Ensures modularity, performance, and startup speed.  
 
 #### Core Components:  
 1. **Client**: Devices like smartphones, TVs, and laptops used to browse and stream content.  
-2. **Hotstar CDN**: Distributes video content efficiently by delivering streams from geographically proximate servers.  
+2. **Nova Digital CDN**: Distributes video content efficiently by delivering streams from geographically proximate servers.  
 3. **Backend Services**: Responsible for user authentication, content recommendations, and subscription handling.  
 
 ### Onboarding a Movie  
-- Hotstar performs **video transcoding** to support multiple resolutions and formats.  
+- Nova Digital performs **video transcoding** to support multiple resolutions and formats.  
 - Transcoded files are distributed to CDN servers globally.  
 - AWS manages login, billing, and recommendation tasks, ensuring seamless playback.  
 
