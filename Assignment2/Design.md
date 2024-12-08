@@ -121,7 +121,22 @@ NOVA Digital employs a **microservices architecture**, enabling scalability and 
 - **Zuul Gateway**: Handles dynamic routing, monitoring, and security.  
 - **Hystrix**: Ensures fault tolerance in case of service failures.  
 - **EV Cache**: A custom caching layer for frequently accessed data.  
+---
+###3.2 Design Principles 
 
+The design principles employed in Nova Digital's system follow best practices and align with the SWEBOK guide. The following principles are applied:
+
+- **Modularity**: Nova Digital's system is divided into smaller, loosely coupled modules (microservices), allowing for independent development, testing, and deployment.
+
+- **Separation of Concerns**: Each module focuses on a specific functionality or business domain, ensuring clear responsibilities and reducing system complexity.
+
+- **Scalability**: Nova Digital's architecture is built to support a large number of users and content items by distributing the load across multiple instances.
+
+- **Fault Tolerance**: The system incorporates redundancy, replication, and monitoring to handle failures and maintain high availability.
+
+- **Security**: Nova Digital employs secure communication protocols, access controls, and encryption to safeguard user data and prevent unauthorized access.
+
+- **Performance Optimization**: Nova Digital uses caching, content delivery networks (CDNs), and data indexing techniques to enhance performance and reduce latency.
 ---
 
 ## 4. Detailed Design  
