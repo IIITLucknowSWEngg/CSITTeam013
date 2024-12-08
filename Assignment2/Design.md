@@ -122,7 +122,7 @@ NOVA Digital employs a **microservices architecture**, enabling scalability and 
 - **Hystrix**: Ensures fault tolerance in case of service failures.  
 - **EV Cache**: A custom caching layer for frequently accessed data.  
 ---
-###3.2 Design Principles 
+3.2 Design Principles 
 
 The design principles employed in Nova Digital's system follow best practices and align with the SWEBOK guide. The following principles are applied:
 
