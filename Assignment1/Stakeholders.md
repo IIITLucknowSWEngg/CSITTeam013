@@ -80,14 +80,14 @@ engagement.
 
 ### 3.1 Users 
 - **Free Users:** 
-These users access a limited range of content with ads. They typically 
+These users access a limited range of content with ads who need login. They typically 
 serve as a base for potential premium users. Their feedback on ads 
 and free content is important to improve monetization strategies and 
 user experience. 
 
 - **Subscribers (Premium Users):** 
 Premium users pay for access to exclusive content or ad-free 
-streaming. They are the main source of revenue and their experience 
+streaming who need login. They are the main source of revenue and their experience 
 is prioritized, with exclusive benefits like early access to content, 
 higher video quality, or exclusive shows. Their satisfaction drives 
 retention and growth of the platform. 
