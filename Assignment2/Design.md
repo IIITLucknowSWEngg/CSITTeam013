@@ -139,33 +139,31 @@ NOVA Digital employs a **microservices architecture**, enabling scalability and 
 
 ## 4. Detailed Design  
 
-### User Management  
+### 4.1 User Management  
 - **Purpose**: Handles user registration, login, and profile customization.  
 - **Interfaces**: OAuth for authentication, database for user data storage.  
 
-### Content Management  
+### 4.2 Content Management  
 - **Purpose**: Manages content ingestion, categorization, and metadata.  
 - **Interfaces**: Collaborates with content providers and recommendation engines.  
 
-### Recommendation Engine  
+### 4.3 Recommendation Engine  
 - **Purpose**: Provides personalized content suggestions.  
 - **Technology**: Machine learning models analyzing user data.  
 
-### Streaming Infrastructure  
+### 4.4 Streaming Infrastructure  
 - **Purpose**: Ensures efficient video delivery.  
 - **Features**: Adaptive bitrate streaming, caching, and network optimization.  
 
-### Billing and Subscription  
+### 4.5 Billing and Subscription  
 - **Purpose**: Manages subscriptions and payment transactions.  
 - **Interfaces**: Integrates with external payment gateways.  
 
-### Analytics and Insights  
+### 4.6 Analytics and Insights  
 - **Purpose**: Collects data for user behavior analysis and system optimization.  
 - **Interfaces**: Integrates with various modules for data collection.  
 
----
-
-### Design Principles and Trade-offs  
+### 4.7 Design Principles and Trade-offs  
 - **Scalability**: Utilizes cloud-based infrastructure and CDN optimization.  
 - **Performance vs. Storage**: Balances video quality and storage efficiency.  
 - **Data Privacy**: Secures user data with encryption and authentication protocols.  
