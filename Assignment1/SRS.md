@@ -424,3 +424,23 @@ The platform will prioritize usability with:
 - **APIs:**  
   Open and well-documented APIs for third-party apps and plugins.
   - **Use Case:** A third-party app developer creates a recommendation tool that integrates seamlessly with the platform’s API to suggest content based on user preferences.
+## Use Case: Watching a Live Sports Event
+
+**Actors:** Free User, Premium Subscriber, Content Delivery Network (CDN).
+
+**Preconditions:**
+- User is logged in.
+- User has a valid subscription (for Premium features).
+- Internet speed meets minimum requirements.
+
+**Steps:**
+1. Navigate to the "Live Sports" section.
+2. Select a live sports event.
+3. System verifies the user's subscription and adjusts playback quality.
+4. User streams the event.
+
+**Exceptions:**
+- Unstable internet: Bitrate adjusts or prompts a retry.
+- Expired subscription: Redirects to subscription page.
+
+**Priority:** High
