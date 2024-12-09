@@ -48,7 +48,7 @@
     - [ii. Social Media Integration](#ii-social-media-integration)
     - [iii. Customer Support](#iii-customer-support)
     - [iv. Content Providers](#iv-content-providers)
-5. [Performance and System Requirements](#5-performance-and-system-requirements)
+5. [Non-functional Requirements](#5-non-functional-requirements)
   - [5.1 Performance Requirements](#51-performance-requirements)
   - [5.2 Safety Requirements](#52-safety-requirements)
   - [5.3 Security Requirements](#53-security-requirements)
@@ -56,12 +56,6 @@
   - [5.5 Maintainability Requirements](#55-maintainability-requirements)
   - [5.6 Reliability Requirements](#56-reliability-requirements)
   - [5.7 Interoperability Requirements](#57-interoperability-requirements)
-6. [Use Case Scenarios](#6-use-case-scenarios)
-   - [6.1 Security Requirements](#61-security-requirements)
-   - [6.2 Software Quality Attributes](#62-software-quality-attributes)
-   - [6.3 Maintainability Requirements](#63-maintainability-requirements)
-   - [6.4 Reliability Requirements](#64-reliability-requirements)
-   - [6.5 Interoperability Requirements](#65-interoperability-requirements)
 
 ---
 
@@ -322,7 +316,7 @@ The platform will prioritize usability with:
 
 ---
 
-## Performance and System Requirements
+## 5. Non-functional Requirements
 
 ### 5.1 Performance Requirements:
 
@@ -431,46 +425,3 @@ The platform will prioritize usability with:
   - **Use Case:** A third-party app developer creates a recommendation tool that integrates seamlessly with the platform’s API to suggest content based on user preferences.
 ---
 
-## 6. Use Case Scenarios
-
-### 6.1 Security Requirements
-- **User Authentication**:
-  - **Use Case**: A user logs in from a new device, and the platform requests a verification code sent to their email before allowing access to the account, adding an extra layer of security.
-- **Encryption**:
-  - **Use Case**: While streaming a sensitive documentary, both the stream and personal data (e.g., billing information) are encrypted, protecting the user from eavesdropping or data breaches.
-- **Access Control**:
-  - **Use Case**: Only authorized administrators can access the platform’s backend to update content, while customer service representatives can only access user support tickets and account-related queries.
-- **Fraud Detection**:
-  - **Use Case**: The platform detects a user attempting to bypass geo-restrictions using a VPN and immediately restricts access to the content, notifying the user of the violation.
-
-### 6.2 Software Quality Attributes
-- **Usability**:
-  - **Use Case**: A visually impaired user navigates the platform easily using a screen reader to select shows and movies, with all menu items properly labeled for accessibility.
-- **Responsiveness**:
-  - **Use Case**: A user clicks the "pause" button while watching a movie, and the playback immediately stops without any delay or stuttering.
-- **Localization**:
-  - **Use Case**: A user in Spain accesses a Bollywood movie and has the option to switch between Spanish, Hindi, and English subtitles, as well as dubbed audio tracks.
-
-### 6.3 Maintainability Requirements
-- **Modular Architecture**:
-  - **Use Case**: The development team adds a new "Watch Party" feature to the platform, and thanks to the modular system, they deploy it without affecting the core streaming functionality.
-- **Automated Testing**:
-  - **Use Case**: A new recommendation algorithm is added, and automated tests are run immediately to verify that it does not break any other features before it is pushed to production.
-- **Version Control**:
-  - **Use Case**: After deploying a new update that causes minor interface bugs, the team quickly reverts to the previous stable version while they fix the issue.
-
-### 6.4 Reliability Requirements
-- **Fault Tolerance**:
-  - **Use Case**: While a user is streaming a show, one server experiences an issue. The system automatically switches the user’s session to a backup server, allowing the stream to continue without interruption.
-- **High Availability**:
-  - **Use Case**: Even during scheduled maintenance, the platform remains accessible due to server redundancy, ensuring that users don’t experience downtime.
-- **Content Delivery Network (CDN)**:
-  - **Use Case**: A user in a remote part of the world streams content without any noticeable delays because the CDN distributes the content from a server close to their location.
-
-### 6.5 Interoperability Requirements
-- **Cross-Platform Compatibility**:
-  - **Use Case**: A user starts watching a series on their phone, pauses it, and resumes watching on their smart TV without any issues or loss of progress.
-- **Third-Party Integrations**:
-  - **Use Case**: A user connects their Netflix account to their social media, sharing what they’re watching on their profile and using an integrated payment gateway to renew their subscription.
-- **APIs**:
-  - **Use Case**: A third-party app developer creates a recommendation tool that integrates seamlessly with the platform’s API to suggest content based on user preferences.
