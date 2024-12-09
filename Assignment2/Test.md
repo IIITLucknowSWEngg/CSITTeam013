@@ -1354,6 +1354,773 @@ describe('Usability - Tooltips on Hover', function () {
 ```
 
 ### Test Case 17: Localization
+**Scenario: Verify Language Selection**
+```markdown
+Feature: Localization - Language Support
+  As a global user
+  I want to select my preferred language
+  So that I can navigate the website in my native language
+
+  Scenario: Verify language selection from a dropdown menu
+    Given the user is on the homepage
+    When the user selects a language from the language dropdown
+    Then the website should reload in the selected language
+    And all UI elements should be displayed in the selected language
+```
+
+**Scenario: Verify Audio and Subtitle Support for Regional Languages**
+```markdown
+Feature: Localization - Audio and Subtitles in Regional Languages
+  As a user
+  I want to watch content with audio and subtitles in my preferred regional language
+  So that I can understand and enjoy the content fully
+
+  Scenario: Verify audio is available in the selected regional language
+    Given the user is watching content
+    When the user selects a regional language for audio
+    Then the audio should switch to the selected regional language
+
+  Scenario: Verify subtitles are available in the selected language
+    Given the user is watching content
+    When the user selects a language for subtitles
+    Then the subtitles should appear in the selected language
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Localization - Language Support', function () {
+  this.timeout(5000); // Allow time for localization testing
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should switch to the selected language from the language dropdown', (done) => {
+    chai.request(server)
+      .get('/') // Load the homepage
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Simulate selecting a different language from the dropdown
+        const language = 'es'; // Example language code for Spanish
+        chai.request(server)
+          .post('/set-language') // Replace with the endpoint that sets the language
+          .send({ language })
+          .end((err, langRes) => {
+            if (err) return done(err);
+
+            // Step 2: Check if the page content is in the selected language
+            expect(langRes.body.language).to.equal(language);
+            expect(langRes.text).to.include('Bienvenido'); // Check for a known Spanish word ("Welcome")
+            done();
+          });
+      });
+  });
+});
+```
+
+```javascript
+describe('Localization - Audio in Regional Language', function () {
+  this.timeout(5000); // Allow time for audio language testing
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const validCredentials = { username: 'testuser', password: 'ValidPassword123' };
+
+  it('should switch audio to the selected regional language', (done) => {
+    // Simulate logging in to watch content
+    chai.request(server)
+      .post('/login')
+      .send(validCredentials)
+      .end((err, loginRes) => {
+        if (err) return done(err);
+
+        // Step 1: Check the default audio language
+        chai.request(server)
+          .get('/content/video123') // Replace with your content endpoint
+          .set('Authorization', `Bearer ${loginRes.body.token}`)
+          .end((err, contentRes) => {
+            if (err) return done(err);
+
+            // Step 2: Simulate switching the audio to a regional language (e.g., Hindi)
+            const selectedAudio = 'hi'; // Hindi language code
+            chai.request(server)
+              .post('/set-audio') // Replace with endpoint for audio selection
+              .send({ videoId: 'video123', audioLanguage: selectedAudio })
+              .end((err, audioRes) => {
+                expect(audioRes.body.audioLanguage).to.equal(selectedAudio);
+                expect(audioRes.text).to.include('Hindi Audio Started'); // Check for confirmation in Hindi
+                done();
+              });
+          });
+      });
+  });
+});
+```
+
+```javascript
+describe('Localization - Subtitles in Regional Language', function () {
+  this.timeout(5000); // Allow time for subtitle testing
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const validCredentials = { username: 'testuser', password: 'ValidPassword123' };
+
+  it('should display subtitles in the selected regional language', (done) => {
+    // Simulate logging in to watch content
+    chai.request(server)
+      .post('/login')
+      .send(validCredentials)
+      .end((err, loginRes) => {
+        if (err) return done(err);
+
+        // Step 1: Check if subtitles are enabled by default
+        chai.request(server)
+          .get('/content/video123') // Replace with your content endpoint
+          .set('Authorization', `Bearer ${loginRes.body.token}`)
+          .end((err, contentRes) => {
+            if (err) return done(err);
+
+            // Step 2: Simulate selecting subtitles in a regional language (e.g., French)
+            const selectedSubtitles = 'fr'; // French language code
+            chai.request(server)
+              .post('/set-subtitles') // Replace with endpoint for subtitles selection
+              .send({ videoId: 'video123', subtitleLanguage: selectedSubtitles })
+              .end((err, subtitlesRes) => {
+                expect(subtitlesRes.body.subtitleLanguage).to.equal(selectedSubtitles);
+                expect(subtitlesRes.text).to.include('Sous-titres français'); // Check for confirmation in French
+                done();
+              });
+          });
+      });
+  });
+});
+```
+
+### Test Case 18: Modular Architecture
+**Scenario: Verify Independent Module Updates**
+```markdown
+Feature: Modular Architecture - Independent Module Updates
+  As a developer
+  I want the code to be modular so that I can update a module without impacting other parts of the application
+  So that new features can be added with minimal risk
+
+  Scenario: Update a module without affecting other functionality
+    Given the user is interacting with the system
+    When a module is updated (e.g., the "Payment" module)
+    Then the system should continue to function correctly
+    And there should be no issues in unrelated modules (e.g., "User Profile")
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Modular Architecture - Independent Module Updates', function () {
+  this.timeout(5000); // Allow time for testing modular updates
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should update the "Payment" module without affecting the "User Profile" module', (done) => {
+    // Step 1: Test the "User Profile" functionality before the update
+    chai.request(server)
+      .get('/user/profile') // Replace with the endpoint for user profile
+      .end((err, profileRes) => {
+        if (err) return done(err);
+
+        // Step 2: Simulate updating the "Payment" module
+        const updatedPaymentModule = true; // Assume payment module has been updated
+
+        // Step 3: Test the "User Profile" functionality after the update
+        chai.request(server)
+          .get('/user/profile') // Verify "User Profile" still works correctly
+          .end((err, updatedProfileRes) => {
+            if (err) return done(err);
+
+            // Assert that the profile data is still correct and unaffected
+            expect(updatedProfileRes.body.name).to.equal(profileRes.body.name);
+            expect(updatedProfileRes.body.email).to.equal(profileRes.body.email);
+
+            // Assert that the "Payment" module update did not affect the "User Profile"
+            expect(updatedPaymentModule).to.be.true;
+            done();
+          });
+      });
+  });
+});
+```
+
+**Scenario: Verify Easy Addition of New Features**
+```markdown
+Feature: Modular Architecture - Easy Feature Addition
+  As a developer
+  I want the code to be modular so that new features can be added without affecting existing functionality
+  So that I can easily extend the system
+
+  Scenario: Add a new feature (e.g., "Search") without breaking existing functionality
+    Given the "Search" feature is being added to the system
+    When the new feature is integrated into the application
+    Then the new feature should work independently
+    And there should be no impact on existing features (e.g., "User Profile", "Payment")
+```
+
+```javascript
+describe('Modular Architecture - Easy Feature Addition', function () {
+  this.timeout(5000); // Allow time for feature addition testing
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should add the "Search" feature without affecting the "User Profile" and "Payment" features', (done) => {
+    // Step 1: Test the existing "User Profile" and "Payment" features
+    chai.request(server)
+      .get('/user/profile') // Check "User Profile" endpoint
+      .end((err, profileRes) => {
+        if (err) return done(err);
+
+        chai.request(server)
+          .get('/payment') // Check "Payment" endpoint
+          .end((err, paymentRes) => {
+            if (err) return done(err);
+
+            // Step 2: Simulate adding the "Search" feature
+            const searchFeatureAdded = true; // Assume the feature is successfully added
+
+            // Step 3: Verify the new "Search" feature
+            chai.request(server)
+              .get('/search') // Replace with the new "Search" feature endpoint
+              .end((err, searchRes) => {
+                if (err) return done(err);
+
+                // Assert that the "Search" feature is working independently
+                expect(searchRes.status).to.equal(200); // Assuming 200 OK for a successful search
+                expect(searchRes.body).to.have.property('results');
+
+                // Step 4: Ensure the existing features (User Profile, Payment) are still functional
+                chai.request(server)
+                  .get('/user/profile') // Verify "User Profile" still works
+                  .end((err, updatedProfileRes) => {
+                    if (err) return done(err);
+                    expect(updatedProfileRes.body.name).to.equal(profileRes.body.name);
+
+                    chai.request(server)
+                      .get('/payment') // Verify "Payment" still works
+                      .end((err, updatedPaymentRes) => {
+                        if (err) return done(err);
+                        expect(updatedPaymentRes.body.status).to.equal(paymentRes.body.status);
+
+                        // Assert that the new "Search" feature did not impact existing features
+                        expect(searchFeatureAdded).to.be.true;
+                        done();
+                      });
+                  });
+              });
+          });
+      });
+  });
+});
+```
+
+### Test Case 19: Automated Testing
+**Scenario: Verify Automated Tests Run in CI Pipeline**
+
+```markdown
+Feature: Automated Testing - Continuous Integration and Automated Bug Detection
+  As a developer
+  I want automated tests to run in the CI pipeline
+  So that bugs are identified early and quickly resolved
+
+  Scenario: Automated tests should be executed in the CI pipeline
+    Given a new commit is pushed to the repository
+    When the continuous integration pipeline is triggered
+    Then all automated tests should run successfully
+    And any failing tests should be reported
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Automated Testing - Continuous Integration', function () {
+  this.timeout(5000); // Allow time for CI testing
+
+  const server = 'http://localhost:3000'; // Replace with your CI server URL
+
+  it('should run automated tests in the CI pipeline after a commit', (done) => {
+    // Simulate a commit push that triggers the CI pipeline
+    chai.request(server)
+      .post('/commit') // Replace with the endpoint that triggers the CI pipeline
+      .send({ commitMessage: 'Fix bugs in login feature' })
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Check if CI pipeline runs successfully
+        chai.request(server)
+          .get('/ci-pipeline-status') // Replace with the endpoint that checks CI status
+          .end((err, ciStatusRes) => {
+            if (err) return done(err);
+
+            // Step 2: Assert that automated tests were executed and the result is successful
+            expect(ciStatusRes.body.testsRun).to.be.greaterThan(0);
+            expect(ciStatusRes.body.status).to.equal('success');
+            done();
+          });
+      });
+  });
+});
+```
+
+
+**Scenario: Verify Quick Bug Detection**
+```markdown
+Feature: Automated Testing - Quick Bug Detection
+  As a developer
+  I want automated tests to catch bugs early
+  So that issues are fixed quickly before they affect production
+
+  Scenario: Automated tests should catch a bug in the "Login" feature
+    Given the "Login" feature has a known bug
+    When the automated test is executed for the "Login" feature
+    Then the test should fail
+    And a bug report should be generated in the CI system
+```
+
+```javascript
+describe('Automated Testing - Quick Bug Detection', function () {
+  this.timeout(5000); // Allow time for bug detection testing
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should detect a bug in the "Login" feature during automated testing', (done) => {
+    // Step 1: Simulate a bug in the "Login" feature (e.g., invalid credentials handling)
+    const invalidLogin = { username: 'testuser', password: 'wrongpassword' };
+
+    chai.request(server)
+      .post('/login') // Replace with the actual login endpoint
+      .send(invalidLogin)
+      .end((err, loginRes) => {
+        if (err) return done(err);
+
+        // Step 2: Check if the "Login" automated test catches the issue
+        chai.request(server)
+          .get('/run-login-tests') // Replace with the endpoint to trigger "Login" tests
+          .end((err, testRes) => {
+            if (err) return done(err);
+
+            // Step 3: Assert that the test for "Login" failed due to the known bug
+            expect(testRes.status).to.equal(500); // Assuming 500 Internal Server Error for a failed test
+            expect(testRes.body.message).to.include('Invalid credentials error'); // Error message from failed test
+            done();
+          });
+      });
+  });
+});
+```
+
+### Test Case 20: Version Control
+**Scenario: Verify Version Control System Tracks Changes Correctly**
+```markdown
+Feature: Version Control - Track Changes and Revert to Stable Versions
+  As a developer
+  I want the version control system to track changes and manage stable versions
+  So that I can revert to a stable version in case of issues
+
+  Scenario: Version control system tracks code changes and commits properly
+    Given a new feature or bug fix is developed
+    When the code is committed to the version control system
+    Then the commit should be recorded with the correct commit message
+    And the changes should be visible in the version history
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Version Control - Track Changes', function () {
+  this.timeout(5000); // Allow time for version control operations
+
+  const server = 'http://localhost:3000'; // Replace with your version control system's endpoint
+
+  it('should track code changes with correct commit messages and history', (done) => {
+    // Step 1: Commit a new change with a message
+    const commitMessage = 'Add feature X - Implement login system';
+    chai.request(server)
+      .post('/commit') // Replace with the endpoint for committing changes
+      .send({ message: commitMessage, changes: ['file1.js', 'file2.js'] })
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 2: Retrieve the commit history to verify the changes were recorded
+        chai.request(server)
+          .get('/commit-history') // Replace with the endpoint to retrieve commit history
+          .end((err, historyRes) => {
+            if (err) return done(err);
+
+            // Step 3: Assert that the commit history contains the new commit with the correct message
+            const latestCommit = historyRes.body[0]; // Assuming the latest commit is at index 0
+            expect(latestCommit.message).to.equal(commitMessage);
+            expect(latestCommit.changes).to.deep.include('file1.js');
+            expect(latestCommit.changes).to.deep.include('file2.js');
+            done();
+          });
+      });
+  });
+});
+
+```
+
+**Scenario: Verify Reverting to a Stable Version**
+```markdown
+Feature: Version Control - Revert to Stable Version
+  As a developer
+  I want to revert to a stable version of the code in case of issues
+  So that I can avoid system failures or bugs
+
+  Scenario: Revert to a previous stable version after a failed deployment
+    Given the latest code deployment has caused issues
+    When a stable version from the version control system is identified
+    Then the system should be reverted to the stable version
+    And the application should function correctly with the reverted version
+```
+
+```javascript
+describe('Version Control - Revert to Stable Version', function () {
+  this.timeout(5000); // Allow time for version control and deployment actions
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should revert to a stable version after a failed deployment', (done) => {
+    // Step 1: Simulate a failed deployment that caused issues in the application
+    const failedVersion = 'v2.0.0'; // Assume v2.0.0 caused issues
+    chai.request(server)
+      .post('/deploy') // Replace with the endpoint for deploying new code
+      .send({ version: failedVersion })
+      .end((err, deployRes) => {
+        if (err) return done(err);
+
+        // Step 2: Revert to a stable version, e.g., v1.0.0
+        const stableVersion = 'v1.0.0';
+        chai.request(server)
+          .post('/revert') // Replace with the endpoint to revert to a previous version
+          .send({ version: stableVersion })
+          .end((err, revertRes) => {
+            if (err) return done(err);
+
+            // Step 3: Assert that the application is running the stable version correctly
+            expect(revertRes.body.version).to.equal(stableVersion);
+            expect(revertRes.body.status).to.equal('success');
+            done();
+          });
+      });
+  });
+});
+```
+
+### Test Case 21: Fault Tolerance
+**Scenario: Verify System Recovers from Software Failures**
+
+```markdown
+Feature: Fault Tolerance - Recovery from Software Failures
+  As a user
+  I want the system to recover from software failures without affecting my experience
+  So that I can continue using the application without interruptions
+
+  Scenario: The system should recover from a software failure without impacting user experience
+    Given the user is interacting with the system
+    When a software failure occurs in the application
+    Then the system should automatically recover from the failure
+    And the user should not notice any interruptions in their experience
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Fault Tolerance - Software Failure Recovery', function () {
+  this.timeout(5000); // Allow time for failure recovery
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should recover from a software failure without impacting user experience', (done) => {
+    // Simulate a software failure by causing an error in the system (e.g., invalid request)
+    chai.request(server)
+      .post('/simulate-software-failure') // Replace with the endpoint to simulate software failure
+      .send({ causeFailure: true })
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Ensure the system automatically recovers and returns a valid response
+        chai.request(server)
+          .get('/status') // Replace with an endpoint that checks system status
+          .end((err, statusRes) => {
+            if (err) return done(err);
+
+            // Step 2: Assert that the system is functional after recovery
+            expect(statusRes.status).to.equal(200);
+            expect(statusRes.body.status).to.equal('Operational');
+            done();
+          });
+      });
+  });
+});
+```
+
+
+**Scenario: Verify System Recovers from Hardware Failures**
+```markdown
+Feature: Fault Tolerance - Recovery from Hardware Failures
+  As a user
+  I want the system to recover from hardware failures without affecting my experience
+  So that I can continue using the application without interruptions
+
+  Scenario: The system should recover from a hardware failure without impacting user experience
+    Given the user is interacting with the system
+    When a hardware failure occurs (e.g., server crash)
+    Then the system should automatically switch to a backup server
+    And the user should not notice any interruptions in their experience
+```
+
+```javascript
+describe('Fault Tolerance - Hardware Failure Recovery', function () {
+  this.timeout(5000); // Allow time for hardware failure recovery
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should recover from a hardware failure without impacting user experience', (done) => {
+    // Step 1: Simulate a hardware failure (e.g., server crash)
+    chai.request(server)
+      .post('/simulate-hardware-failure') // Replace with the endpoint to simulate hardware failure
+      .send({ causeFailure: true })
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 2: Ensure the system switches to a backup server
+        chai.request(server)
+          .get('/status') // Replace with an endpoint to check system status after failure
+          .end((err, statusRes) => {
+            if (err) return done(err);
+
+            // Step 3: Assert that the system is operational and has switched to a backup server
+            expect(statusRes.status).to.equal(200);
+            expect(statusRes.body.status).to.equal('Operational');
+            expect(statusRes.body.server).to.not.equal('primary'); // Ensure it's using a backup server
+            done();
+          });
+      });
+  });
+});
+```
+
+### Test Case 22:  High Availability
+**Scenario: Verify System Ensures 99.99% Uptime**
+```markdown
+Feature: High Availability - Ensure 99.99% Uptime
+  As a user
+  I want the system to have 99.99% uptime
+  So that I can access the application without significant downtime
+
+  Scenario: The system should ensure 99.99% uptime using redundant servers and automatic failover
+    Given the system is running with redundant servers
+    When one server fails
+    Then the system should automatically failover to another server
+    And the user should not experience any downtime
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('High Availability - Ensure 99.99% Uptime', function () {
+  this.timeout(10000); // Allow time for failover actions
+
+  const server = 'http://localhost:3000'; // Replace with your system's URL
+
+  it('should ensure 99.99% uptime using redundant servers and automatic failover', (done) => {
+    // Step 1: Simulate a server failure (e.g., primary server down)
+    chai.request(server)
+      .post('/simulate-server-failure') // Replace with your endpoint to simulate server failure
+      .send({ causeFailure: true })
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 2: Ensure the system automatically fails over to a backup server
+        chai.request(server)
+          .get('/status') // Replace with an endpoint to check the current status of the system
+          .end((err, statusRes) => {
+            if (err) return done(err);
+
+            // Step 3: Assert that the backup server is in use and the system is operational
+            expect(statusRes.status).to.equal(200);
+            expect(statusRes.body.status).to.equal('Operational');
+            expect(statusRes.body.server).to.not.equal('primary'); // Ensure failover occurred
+            done();
+          });
+      });
+  });
+});
+```
+
+
+**Scenario: Verify Automatic Failover Mechanism**
+```markdown
+Feature: High Availability - Automatic Failover
+  As a user
+  I want the system to automatically switch to a backup server in case of failure
+  So that I do not experience service interruptions
+
+  Scenario: The system should automatically failover to a backup server during server failure
+    Given the primary server fails
+    When the system detects the failure
+    Then the system should automatically switch to a backup server
+    And the user should not notice any interruptions
+```
+
+```javascript
+describe('High Availability - Automatic Failover', function () {
+  this.timeout(10000); // Allow time for failover actions
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should automatically failover to a backup server during server failure', (done) => {
+    // Step 1: Simulate the failure of the primary server
+    chai.request(server)
+      .post('/simulate-primary-server-failure') // Replace with the endpoint to simulate primary server failure
+      .send({ causeFailure: true })
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 2: Ensure the system switches to a backup server
+        chai.request(server)
+          .get('/status') // Replace with an endpoint to check system status
+          .end((err, statusRes) => {
+            if (err) return done(err);
+
+            // Step 3: Assert that the backup server is in use and the system is still operational
+            expect(statusRes.status).to.equal(200);
+            expect(statusRes.body.status).to.equal('Operational');
+            expect(statusRes.body.server).to.not.equal('primary'); // Ensure failover occurred
+            done();
+          });
+      });
+  });
+});
+```
+
+### Test Case 23: Content Delivery Network (CDN)
+**Scenario: Verify Content Delivery Using Global CDNs**
+```markdown
+Feature: Content Delivery Network (CDN) - Quick and Reliable Content Delivery
+  As a user
+  I want to access content quickly and reliably, regardless of my geographic location
+  So that I have a smooth browsing experience
+
+  Scenario: The system should deliver content using a global CDN to ensure reliable and quick access
+    Given the user is accessing content from a remote location
+    When the user requests a resource (e.g., video, image, page)
+    Then the system should use the nearest CDN edge server to deliver the content
+    And the content should load quickly with minimal latency
+```
+```javascript
+
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Content Delivery Network (CDN) - Quick and Reliable Content Delivery', function () {
+  this.timeout(10000); // Allow time for content delivery checks
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const resource = '/images/sample-image.jpg'; // Replace with the resource you want to test
+
+  it('should deliver content using the nearest CDN edge server', (done) => {
+    // Simulate a request for content from a remote location
+    chai.request(server)
+      .get(resource)
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Assert that the content is served from a CDN edge server
+        // Example: Checking response headers for CDN-specific information
+        expect(res.headers['x-cdn-edge']).to.exist; // Ensure CDN header is present
+        expect(res.status).to.equal(200); // Ensure the content was successfully delivered
+        done();
+      });
+  });
+});
+
+```
+
+**Scenario: Verify Content Delivery Performance Across Different Regions**
+```markdown
+Feature: Content Delivery Network (CDN) - Regional Content Delivery Performance
+  As a user
+  I want to receive content quickly, regardless of my geographic location
+  So that I can have a seamless experience, even when far from the origin server
+
+  Scenario: The system should deliver content efficiently to users in different regions
+    Given a user is located in multiple regions (e.g., North America, Europe, Asia)
+    When the user requests the same content
+    Then the content should be delivered from the nearest CDN server to minimize latency
+    And the loading times for the content should be fast and consistent across regions
+```
+```javascript
+
+describe('Content Delivery Network (CDN) - Regional Content Delivery Performance', function () {
+  this.timeout(15000); // Allow time for performance checks across regions
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const resource = '/videos/sample-video.mp4'; // Replace with the resource you want to test
+
+  it('should deliver content efficiently to users in different regions', (done) => {
+    // Simulate requests for content from users in different regions
+    const regions = ['North America', 'Europe', 'Asia'];
+
+    regions.forEach((region) => {
+      chai.request(server)
+        .get(resource)
+        .set('X-Region', region) // Simulate requests from different regions using headers
+        .end((err, res) => {
+          if (err) return done(err);
+
+          // Step 1: Assert that content is delivered quickly
+          expect(res.status).to.equal(200); // Ensure the content is successfully delivered
+          expect(res.headers['x-cdn-edge']).to.exist; // Ensure CDN edge server header is present
+
+          // Step 2: Check that the content is delivered with minimal latency (response time within limits)
+          const responseTime = res.headers['x-response-time']; // Assuming response time is in headers
+          expect(Number(responseTime)).to.be.lessThan(2000); // Assert response time is under 2 seconds
+
+          // Continue testing for the other regions
+          if (region === 'Asia') {
+            done(); // Final callback when all regions have been tested
+          }
+        });
+    });
+  });
+});
+```
+
+
+
+
+
 
 
 ## References
