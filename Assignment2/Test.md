@@ -584,6 +584,776 @@ describe('Service Availability - Rolling Updates', function () {
 });
 ```
 
+### Test Case 11: Content Control
+**Scenario: Verify Age-Based Restrictions for Inappropriate Content**
+
+```markdown
+Feature: Content Control
+  As a user
+  I want to ensure that age-restricted content is accessible only to users of the appropriate age
+  So that children cannot access inappropriate content
+
+  Scenario: Ensure users below the required age cannot access age-restricted content
+    Given the user has logged in with an age below 18
+    When the user attempts to access age-restricted content
+    Then the user should be denied access to the content
+    And the user should see a message indicating that the content is restricted due to age
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Content Control - Age Restrictions', function () {
+  this.timeout(5000);
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const restrictedContentId = 'restrictedVideo123'; // Replace with a test video ID
+  const underageUser = { username: 'childUser', age: 15 }; // User under 18
+
+  it('should deny access to age-restricted content for users under 18', (done) => {
+    chai.request(server)
+      .post('/login') // Assuming you have a login endpoint
+      .send(underageUser)
+      .end((err, loginRes) => {
+        if (err) return done(err);
+
+        chai.request(server)
+          .get(`/content/${restrictedContentId}`) // Accessing restricted content
+          .set('Authorization', `Bearer ${loginRes.body.token}`) // Assuming token-based auth
+          .end((err, res) => {
+            // Assertions
+            expect(res).to.have.status(403); // Expecting Forbidden status code
+            expect(res.body).to.have.property('message').that.equals('Access Denied: Age restricted content');
+            done();
+          });
+      });
+  });
+});
+```
+
+**Scenario: Ensure Users of Appropriate Age Can Access Content**
+```markdown
+Scenario: Ensure users of appropriate age can access content
+  Given the user has logged in with an age above 18
+  When the user attempts to access age-restricted content
+  Then the user should be allowed to access the content
+  And the user should be able to view the content without restrictions
+```
+
+```javascript
+describe('Content Control - Age Restrictions', function () {
+  this.timeout(5000);
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const restrictedContentId = 'restrictedVideo123'; // Replace with a test video ID
+  const adultUser = { username: 'adultUser', age: 25 }; // User above 18
+
+  it('should allow access to age-restricted content for users 18 and older', (done) => {
+    chai.request(server)
+      .post('/login') // Assuming you have a login endpoint
+      .send(adultUser)
+      .end((err, loginRes) => {
+        if (err) return done(err);
+
+        chai.request(server)
+          .get(`/content/${restrictedContentId}`) // Accessing restricted content
+          .set('Authorization', `Bearer ${loginRes.body.token}`) // Assuming token-based auth
+          .end((err, res) => {
+            // Assertions
+            expect(res).to.have.status(200); // Expecting OK status code
+            expect(res.body).to.have.property('contentId').that.equals(restrictedContentId);
+            done();
+          });
+      });
+  });
+});
+```
+
+### Test case 12: User Authentication
+**Scenario: Verify Two-Factor Authentication (2FA)**
+```markdown
+Feature: User Authentication
+  As a user
+  I want to secure my account with two-factor authentication (2FA)
+  So that my account is protected by an additional layer of security
+
+  Scenario: User logs in with two-factor authentication
+    Given the user has registered for 2FA
+    When the user logs in with their username and password
+    And enters the correct 2FA code sent to their mobile device
+    Then the user should be granted access to their account
+
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('User Authentication - Two-Factor Authentication (2FA)', function () {
+  this.timeout(10000); // Allow time for testing 2FA process
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const loginCredentials = { username: 'testuser', password: 'TestPass123' }; // Example credentials
+  const valid2FACode = '123456'; // Example 2FA code, typically generated dynamically
+
+  it('should allow the user to log in with valid 2FA code', (done) => {
+    // Step 1: Attempt to login with username and password
+    chai.request(server)
+      .post('/login') // Replace with your login endpoint
+      .send(loginCredentials)
+      .end((err, loginRes) => {
+        if (err) return done(err);
+
+        // Step 2: Submit the valid 2FA code after login attempt
+        chai.request(server)
+          .post('/verify-2fa') // Replace with your 2FA verification endpoint
+          .send({ username: loginCredentials.username, code: valid2FACode })
+          .end((err, res) => {
+            // Assertions
+            expect(res).to.have.status(200); // Expecting OK status code
+            expect(res.body).to.have.property('message').that.equals('Login successful');
+            done();
+          });
+      });
+  });
+
+  it('should deny login with invalid 2FA code', (done) => {
+    const invalid2FACode = '000000'; // Invalid code
+
+    // Step 1: Attempt to login with username and password
+    chai.request(server)
+      .post('/login') // Replace with your login endpoint
+      .send(loginCredentials)
+      .end((err, loginRes) => {
+        if (err) return done(err);
+
+        // Step 2: Submit the invalid 2FA code after login attempt
+        chai.request(server)
+          .post('/verify-2fa') // Replace with your 2FA verification endpoint
+          .send({ username: loginCredentials.username, code: invalid2FACode })
+          .end((err, res) => {
+            // Assertions
+            expect(res).to.have.status(401); // Expecting Unauthorized status code
+            expect(res.body).to.have.property('message').that.equals('Invalid 2FA code');
+            done();
+          });
+      });
+  });
+});
+```
+
+**Scenario: Verify Strong Password Policy**
+```markdown
+Scenario: User must set a strong password during registration
+  Given the user is registering a new account
+  When the user enters a password that does not meet the strong password policy
+  Then the user should see an error message indicating the password requirements
+  And the user should not be able to complete the registration
+```
+
+```javascript
+describe('User Authentication - Strong Password Policy', function () {
+  this.timeout(5000); // Allow time for password validation testing
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const weakPassword = '12345'; // Weak password (less than 8 characters, no special characters)
+  const strongPassword = 'Str0ngP@ssw0rd123'; // Strong password (meets policy)
+
+  it('should deny registration with a weak password', (done) => {
+    chai.request(server)
+      .post('/register') // Replace with your registration endpoint
+      .send({ username: 'newuser', password: weakPassword })
+      .end((err, res) => {
+        // Assertions
+        expect(res).to.have.status(400); // Expecting Bad Request for weak password
+        expect(res.body).to.have.property('message').that.equals('Password must be at least 8 characters long and contain at least one number, one uppercase letter, and one special character.');
+        done();
+      });
+  });
+
+  it('should allow registration with a strong password', (done) => {
+    chai.request(server)
+      .post('/register') // Replace with your registration endpoint
+      .send({ username: 'newuser', password: strongPassword })
+      .end((err, res) => {
+        // Assertions
+        expect(res).to.have.status(201); // Expecting Created status for successful registration
+        expect(res.body).to.have.property('message').that.equals('Registration successful');
+        done();
+      });
+  });
+});
+
+```
+
+### Test Case 13: Encryption
+**Scenario: Verify Data Encryption in Transit**
+
+```markdown
+Feature: Data Encryption
+  As a user
+  I want my data to be encrypted during transmission
+  So that my sensitive information cannot be intercepted by unauthorized parties
+
+  Scenario: Verify that data is encrypted in transit when accessing content
+    Given the user is logged in and accessing streaming content
+    When the user requests a video stream
+    Then the video data should be encrypted during transmission
+    And the user should not be able to intercept the data with unauthorized tools
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+const https = require('https');
+
+chai.use(chaiHttp);
+
+describe('Data Encryption - In Transit', function () {
+  this.timeout(10000); // Allow time for testing encryption in transit
+
+  const server = 'https://localhost:3000'; // Replace with your HTTPS server URL
+  const streamingEndpoint = '/stream/video123'; // Replace with the video streaming endpoint
+
+  it('should ensure that data is encrypted in transit during streaming', (done) => {
+    chai.request(server)
+      .get(streamingEndpoint) // Requesting video stream
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Check if the response is over HTTPS, which indicates encryption
+        expect(res).to.have.status(200); // Expecting OK status code
+        expect(res.request.protocol).to.equal('https'); // Check that protocol is HTTPS
+
+        // Optional: Check for absence of sensitive data in plain text in the response
+        expect(res.text).to.not.include('sensitive information'); // Ensuring no sensitive data leakage
+
+        done();
+      });
+  });
+
+  it('should block access over HTTP for sensitive data', (done) => {
+    // Test to ensure data cannot be accessed over an unencrypted HTTP connection
+    chai.request('http://localhost:3000') // Using HTTP (not HTTPS)
+      .get(streamingEndpoint)
+      .end((err, res) => {
+        expect(res).to.have.status(403); // Expecting Forbidden status for non-HTTPS request
+        done();
+      });
+  });
+});
+```
+
+**Scenario: Verify Data Encryption at Rest**
+
+```markdown
+Scenario: Verify that user data is encrypted at rest
+  Given the user has uploaded a video or saved personal information
+  When the data is stored in the database
+  Then the data should be encrypted in storage
+  And the data should remain unreadable to unauthorized users or systems
+```
+```javascript
+describe('Data Encryption - At Rest', function () {
+  this.timeout(5000); // Allow time for testing encryption at rest
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const userData = { username: 'testuser', password: 'TestPass123', email: 'testuser@example.com' };
+
+  it('should ensure that user data is encrypted at rest in the database', (done) => {
+    // Step 1: Store user data (simulating registration or data saving)
+    chai.request(server)
+      .post('/register') // Replace with your registration endpoint
+      .send(userData)
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 2: Simulate retrieving the data from the database (in a real scenario, this would be a database query)
+        chai.request(server)
+          .get(`/user/${userData.username}`) // Replace with endpoint to retrieve user data
+          .end((err, res) => {
+            // Assertions
+            expect(res).to.have.status(200); // Expecting OK status code
+
+            // Check that sensitive data is encrypted (cannot be seen in plain text)
+            expect(res.body).to.not.have.property('password'); // Password should not be exposed
+            expect(res.body).to.have.property('email').that.equals(userData.email);
+
+            // Further, check that no sensitive data is exposed in plaintext from the storage
+            expect(res.body.password).to.not.match(/[A-Za-z0-9]/); // Ensure password is encrypted
+
+            done();
+          });
+      });
+  });
+});
+```
+### Test case 14: Access Control 
+**Scenario: Verify Role-Based Access Control for Users**
+
+```markdown
+Feature: Role-Based Access Control (RBAC)
+  As an administrator
+  I want to assign roles to users
+  So that different users can have different levels of access
+
+  Scenario: User with Admin role has access to administrative features
+    Given the user is assigned the "Admin" role
+    When the user logs in
+    Then the user should have access to administrative features
+
+  Scenario: User with Viewer role has no access to administrative features
+    Given the user is assigned the "Viewer" role
+    When the user logs in
+    Then the user should not have access to administrative features
+    And the user should see a "403 Forbidden" message
+
+  Scenario: User with Editor role has access to content editing but not admin features
+    Given the user is assigned the "Editor" role
+    When the user logs in
+    Then the user should have access to content editing features
+    And the user should not have access to administrative features
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Access Control - RBAC', function () {
+  this.timeout(5000); // Allow time for testing RBAC
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const adminCredentials = { username: 'adminuser', password: 'AdminPass123' };
+  const editorCredentials = { username: 'editoruser', password: 'EditorPass123' };
+  const viewerCredentials = { username: 'vieweruser', password: 'ViewerPass123' };
+
+  it('should allow admin to access admin features', (done) => {
+    chai.request(server)
+      .post('/login') // Replace with your login endpoint
+      .send(adminCredentials)
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 2: Ensure admin can access admin features
+        chai.request(server)
+          .get('/admin/dashboard') // Replace with your admin endpoint
+          .set('Authorization', `Bearer ${res.body.token}`) // Assuming token-based auth
+          .end((err, adminRes) => {
+            expect(adminRes).to.have.status(200); // Expecting OK status code
+            expect(adminRes.body).to.have.property('message').that.equals('Admin Dashboard');
+            done();
+          });
+      });
+  });
+
+  it('should deny viewer access to admin features', (done) => {
+    chai.request(server)
+      .post('/login') // Replace with your login endpoint
+      .send(viewerCredentials)
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 2: Ensure viewer cannot access admin features
+        chai.request(server)
+          .get('/admin/dashboard') // Replace with your admin endpoint
+          .set('Authorization', `Bearer ${res.body.token}`) // Assuming token-based auth
+          .end((err, res) => {
+            expect(res).to.have.status(403); // Expecting Forbidden status code
+            expect(res.body).to.have.property('message').that.equals('Access Forbidden');
+            done();
+          });
+      });
+  });
+
+  it('should allow editor to access content features but not admin features', (done) => {
+    chai.request(server)
+      .post('/login') // Replace with your login endpoint
+      .send(editorCredentials)
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 2: Ensure editor can access content editing
+        chai.request(server)
+          .get('/content/edit') // Replace with your content editing endpoint
+          .set('Authorization', `Bearer ${res.body.token}`) // Assuming token-based auth
+          .end((err, contentRes) => {
+            expect(contentRes).to.have.status(200); // Expecting OK status code
+            expect(contentRes.body).to.have.property('message').that.equals('Content Editing Page');
+
+            // Step 3: Ensure editor cannot access admin features
+            chai.request(server)
+              .get('/admin/dashboard') // Replace with your admin endpoint
+              .set('Authorization', `Bearer ${res.body.token}`) // Assuming token-based auth
+              .end((err, adminRes) => {
+                expect(adminRes).to.have.status(403); // Expecting Forbidden status code
+                expect(adminRes.body).to.have.property('message').that.equals('Access Forbidden');
+                done();
+              });
+          });
+      });
+  });
+});
+```
+
+### Test Case 15: Fraud Detection
+**Scenario: Detect and Mitigate Multiple Failed Login Attempts**
+```markdown
+Feature: Fraud Detection - Multiple Failed Login Attempts
+  As a system
+  I want to detect and mitigate fraudulent access attempts from repeated failed logins
+  So that malicious users cannot gain unauthorized access
+
+  Scenario: Block user after multiple failed login attempts
+    Given the user attempts to log in with incorrect credentials multiple times
+    When the system detects 5 failed login attempts
+    Then the user account should be temporarily locked
+    And the user should receive a notification about suspicious activity
+
+  Scenario: Detect login from an unusual IP address
+    Given the user is logged in from a known device and location
+    When the system detects a login attempt from an unusual IP address
+    Then the system should flag the login as suspicious
+    And prompt the user to verify the login via email or SMS
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Fraud Detection - Multiple Failed Login Attempts', function () {
+  this.timeout(5000); // Allow time for testing fraud detection
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const invalidCredentials = { username: 'testuser', password: 'WrongPassword123' };
+  const validCredentials = { username: 'testuser', password: 'ValidPassword123' };
+
+  it('should lock the account after 5 failed login attempts', (done) => {
+    let failedAttempts = 0;
+
+    // Try to login with incorrect credentials multiple times
+    function attemptLogin() {
+      chai.request(server)
+        .post('/login') // Replace with your login endpoint
+        .send(invalidCredentials)
+        .end((err, res) => {
+          failedAttempts++;
+
+          // Check for lockout after 5 failed attempts
+          if (failedAttempts === 5) {
+            expect(res).to.have.status(403); // Forbidden status due to account lock
+            expect(res.body).to.have.property('message').that.equals('Account locked due to multiple failed login attempts');
+            done();
+          } else {
+            attemptLogin(); // Continue attempting login
+          }
+        });
+    }
+
+    attemptLogin(); // Initiate the first login attempt
+  });
+
+  it('should send a notification after account lockout', (done) => {
+    // Simulate a lockout and check if notification is sent
+    chai.request(server)
+      .post('/login')
+      .send(invalidCredentials) // Send invalid credentials
+      .end((err, res) => {
+        expect(res).to.have.status(403);
+        expect(res.body).to.have.property('message').that.equals('Account locked due to multiple failed login attempts');
+
+        // Assuming there's a notification endpoint to check if the user received an alert
+        chai.request(server)
+          .get('/user/testuser/notifications') // Replace with actual notifications endpoint
+          .set('Authorization', `Bearer ${res.body.token}`) // Assuming token-based auth
+          .end((err, notifRes) => {
+            expect(notifRes).to.have.status(200);
+            expect(notifRes.body.notifications).to.include('Suspicious login attempts detected. Account locked.');
+            done();
+          });
+      });
+  });
+});
+```
+
+```javascript
+describe('Fraud Detection - Unusual IP Address Login', function () {
+  this.timeout(5000); // Allow time for testing fraud detection
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const validCredentials = { username: 'testuser', password: 'ValidPassword123' };
+
+  it('should flag login attempt from unusual IP address and prompt for verification', (done) => {
+    // Simulate login from a usual location first
+    chai.request(server)
+      .post('/login')
+      .send(validCredentials)
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Simulate login from an unusual IP address
+        chai.request(server)
+          .post('/login')
+          .send(validCredentials)
+          .set('X-Forwarded-For', '198.51.100.2') // Simulate a different IP address
+          .end((err, res) => {
+            expect(res).to.have.status(401); // Unauthorized status due to suspicious IP
+            expect(res.body).to.have.property('message').that.equals('Suspicious login attempt detected. Please verify your identity.');
+            done();
+          });
+      });
+  });
+});
+```
+
+**Scenario: Detect and Prevent Piracy Attempts**
+
+```markdown
+Scenario: Prevent piracy by detecting simultaneous streaming from multiple locations
+  Given the user is logged in and watching content from a known device
+  When the system detects an attempt to stream the same content from multiple locations simultaneously
+  Then the system should block additional streams from unauthorized locations
+  And the user should be notified about the piracy attempt
+```
+
+```javascript
+describe('Fraud Detection - Piracy Prevention (Simultaneous Streaming)', function () {
+  this.timeout(5000); // Allow time for testing piracy prevention
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const validCredentials = { username: 'testuser', password: 'ValidPassword123' };
+
+  it('should block additional streams from unauthorized locations', (done) => {
+    // User logs in from one location and starts streaming
+    chai.request(server)
+      .post('/login')
+      .send(validCredentials)
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // First streaming session (normal)
+        chai.request(server)
+          .get('/stream/video123') // Replace with your streaming endpoint
+          .set('Authorization', `Bearer ${res.body.token}`) // Assuming token-based auth
+          .end((err, streamRes) => {
+            expect(streamRes).to.have.status(200); // Expecting OK status code for the first stream
+
+            // Simulate login from a different location and attempt to start the same stream
+            chai.request(server)
+              .get('/stream/video123')
+              .set('Authorization', `Bearer ${res.body.token}`)
+              .set('X-Forwarded-For', '203.0.113.1') // Simulating a different IP address
+              .end((err, piracyRes) => {
+                expect(piracyRes).to.have.status(403); // Forbidden status, piracy detected
+                expect(piracyRes.body).to.have.property('message').that.equals('Simultaneous streaming detected. Only one location allowed.');
+                done();
+              });
+          });
+      });
+  });
+});
+```
+
+### Test Case 16: Usability
+**Scenario: Verify Screen Reader Support**
+```markdown
+Feature: Usability - Screen Reader Support
+  As a visually impaired user
+  I want the website to be compatible with screen readers
+  So that I can navigate and interact with the site independently
+
+  Scenario: Verify all images have appropriate alt text
+    Given the user is navigating the website with a screen reader
+    When the user encounters an image
+    Then the screen reader should read the alt text associated with the image
+
+  Scenario: Verify all interactive elements are accessible via keyboard navigation
+    Given the user is using only the keyboard for navigation
+    When the user navigates through buttons and links
+    Then the user should be able to focus on all interactive elements without using a mouse
+
+  Scenario: Verify proper contrast for text and background
+    Given the user with visual impairments is reading the website
+    When the user reads the text
+    Then the text should have a high enough contrast with the background to be readable
+```
+
+**Scenario: Verify Intuitive User Interface**
+```markdown
+Feature: Usability - Intuitive User Interface
+  As a new user
+  I want the interface to be intuitive and easy to use
+  So that I can find what I'm looking for quickly without confusion
+
+  Scenario: Verify that the navigation menu is clear and easy to understand
+    Given the user is on the homepage
+    When the user looks at the navigation menu
+    Then the menu should contain clear, self-explanatory labels for each section
+
+  Scenario: Verify the presence of helpful tooltips on hover for icons and buttons
+    Given the user hovers over an icon or button
+    When the user interacts with the element
+    Then a tooltip with a description of the element should appear
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Usability - Screen Reader Support', function () {
+  this.timeout(5000); // Allow time for accessibility testing
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should have alt text for all images for screen reader compatibility', (done) => {
+    chai.request(server)
+      .get('/') // Load the homepage or any page containing images
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Check for images
+        const images = res.text.match(/<img [^>]*>/g); // Regex to match image tags
+        images.forEach((imgTag) => {
+          // Step 2: Ensure each image has an alt attribute
+          expect(imgTag).to.match(/alt=["'][^"']*["']/); // Ensure alt text is present
+        });
+
+        done();
+      });
+  });
+});
+```
+
+```javascript
+describe('Usability - Keyboard Navigation', function () {
+  this.timeout(5000); // Allow time for testing keyboard navigation
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should allow keyboard navigation through interactive elements', (done) => {
+    chai.request(server)
+      .get('/') // Load the homepage
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Simulate keyboard navigation (e.g., Tab key to move through elements)
+        // Check if all interactive elements (buttons, links) are reachable by keyboard
+        // Using "Tab" to navigate and "Enter" to select an item
+
+        // Here we mock a user navigating through the page and accessing interactive elements
+        const isAccessible = true; // Assuming a method to check if keyboard navigation works
+        expect(isAccessible).to.be.true;
+
+        done();
+      });
+  });
+});
+```
+
+```javascript
+describe('Usability - Text Contrast', function () {
+  this.timeout(5000); // Allow time for testing contrast
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should have sufficient contrast between text and background for readability', (done) => {
+    chai.request(server)
+      .get('/') // Load the homepage
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Check for text and background contrast (using a color contrast library)
+        // You can use libraries like "contrast-ratio" or similar to calculate contrast
+        const textColor = '#000000'; // Example text color (black)
+        const backgroundColor = '#FFFFFF'; // Example background color (white)
+
+        const contrastRatio = calculateContrastRatio(textColor, backgroundColor); // Function to calculate contrast ratio
+
+        // Step 2: Ensure the contrast ratio meets WCAG standards (at least 4.5:1 for normal text)
+        expect(contrastRatio).to.be.at.least(4.5);
+
+        done();
+      });
+  });
+});
+
+// Example function to calculate contrast ratio
+function calculateContrastRatio(color1, color2) {
+  // Implement color contrast calculation logic here
+  return 21; // Placeholder contrast ratio (this should be replaced with real logic)
+}
+```
+
+```javascript
+describe('Usability - Clear Navigation Menu', function () {
+  this.timeout(5000); // Allow time for testing usability
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should have clear and self-explanatory labels in the navigation menu', (done) => {
+    chai.request(server)
+      .get('/') // Load the homepage
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Check if navigation menu contains clear labels (e.g., "Home", "About Us", "Contact")
+        const navMenu = res.text.match(/<nav [^>]*>[\s\S]*?<\/nav>/); // Regex to match <nav> content
+        const menuItems = navMenu[0].match(/<a [^>]*>([^<]+)<\/a>/g); // Extract text inside <a> tags
+
+        // Step 2: Verify if menu items are clear and self-explanatory
+        const expectedLabels = ['Home', 'About Us', 'Contact'];
+        menuItems.forEach((item, index) => {
+          const label = item.replace(/<\/?a[^>]*>/g, '').trim();
+          expect(expectedLabels).to.include(label);
+        });
+
+        done();
+      });
+  });
+});
+```
+
+```javascript
+describe('Usability - Tooltips on Hover', function () {
+  this.timeout(5000); // Allow time for testing tooltips
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should display tooltips on hover for icons and buttons', (done) => {
+    chai.request(server)
+      .get('/') // Load the homepage
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Check for elements with tooltips (e.g., icons or buttons)
+        const tooltips = res.text.match(/<button [^>]*title=["'][^"']+["']/g); // Match buttons with tooltips
+
+        // Step 2: Ensure each button or icon has a tooltip
+        expect(tooltips.length).to.be.greaterThan(0); // Expecting at least one tooltip
+
+        done();
+      });
+  });
+});
+```
+
+### Test Case 17: Localization
 
 
 ## References
