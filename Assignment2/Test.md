@@ -427,6 +427,82 @@ describe('Bandwidth Optimization Testing', function () {
 
 ```
 
+### Test Case 9: Data Protection
+**Scenario: Verify Sensitive User Data is Encrypted During Transmission**
+```markdown
+
+Feature: Data Protection
+  As a user
+  I want my sensitive data to be protected
+  So that my information remains secure
+
+  Scenario: Ensure sensitive user data is encrypted during transmission
+    Given the server is running
+    When the user submits login credentials via the login API
+    Then the data should be transmitted over HTTPS
+    And the request payload should be encrypted
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Data Protection - Secure Transmission', function () {
+  this.timeout(10000); // Allow additional time for tests
+
+  const server = 'https://localhost:3000'; // Ensure HTTPS is used
+  const loginEndpoint = '/login'; // Replace with your login endpoint
+
+  it('should transmit sensitive data securely over HTTPS', (done) => {
+    const loginData = { username: 'testuser', password: 'testpassword' };
+
+    chai.request(server)
+      .post(loginEndpoint)
+      .send(loginData)
+      .end((err, res) => {
+        // Assertions
+        expect(res).to.have.status(200);
+        expect(res.req.agent.protocol).to.equal('https:', 'Request is not using HTTPS');
+        done();
+      });
+  });
+});
+```
+
+**Scenario: Restrict Unauthorized Access to User Profile Data**
+
+```markdown
+Scenario: Prevent unauthorized access to user profile data
+  Given the server is running
+  And the user is logged out
+  When a GET request is sent to the user profile API without authentication
+  Then the response should have a 401 Unauthorized status code
+```
+
+```javascript
+describe('Data Protection - Unauthorized Access', function () {
+  this.timeout(5000);
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const profileEndpoint = '/user/profile'; // Replace with your profile endpoint
+
+  it('should deny access to the profile API without authentication', (done) => {
+    chai.request(server)
+      .get(profileEndpoint)
+      .end((err, res) => {
+        // Assertions
+        expect(res).to.have.status(401); // Expect unauthorized status code
+        expect(res.body).to.have.property('error').that.equals('Unauthorized access');
+        done();
+      });
+  });
+});
+```
+
+
 
 
 
