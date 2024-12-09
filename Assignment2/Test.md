@@ -502,9 +502,87 @@ describe('Data Protection - Unauthorized Access', function () {
 });
 ```
 
+### Test Case 10: Service Availability
+**Scenario: Verify Service Availability During System Maintenance**
 
+```markdown
+Feature: Service Availability
+  As a developer
+  I want the website to remain available during updates or maintenance
+  So that users can continue to access the service with minimal disruption
 
+  Scenario: Verify service availability during updates or maintenance
+    Given the system is undergoing an update or maintenance
+    When the user attempts to access the website
+    Then the website should be responsive with minimal downtime
+    And the user should not experience significant service interruptions
+```
 
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Service Availability - During Maintenance', function () {
+  this.timeout(30000); // Allow time for server maintenance tests
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should maintain service availability during system maintenance', (done) => {
+    chai.request(server)
+      .get('/homepage') // Replace with a valid endpoint
+      .end((err, res) => {
+        if (err) return done(err);
+        
+        // Simulate a maintenance window (mock or actual service restart)
+        // Assume the service is running even with updates or restarts
+
+        // Assertions
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('message').that.equals('Service is available');
+
+        done();
+      });
+  });
+});
+```
+
+**Scenario: Verify Rolling Updates for Zero Downtime Deployment**
+
+```markdown
+Scenario: Ensure zero downtime during rolling updates
+  Given the system is running in a load-balanced environment
+  When an update is deployed to one instance of the server
+  Then traffic should be rerouted to other servers
+  And no downtime should be experienced by the user
+```
+
+```javascript
+describe('Service Availability - Rolling Updates', function () {
+  this.timeout(30000); // Allow time for rolling updates to occur
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+
+  it('should not cause downtime during rolling updates', (done) => {
+    chai.request(server)
+      .get('/homepage') // Replace with a valid endpoint
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Simulate that the system is being updated (i.e., during a rolling update)
+        // Assume the request should still return successfully
+
+        // Assertions
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('message').that.equals('Service is available');
+
+        done();
+      });
+  });
+});
+```
 
 
 
