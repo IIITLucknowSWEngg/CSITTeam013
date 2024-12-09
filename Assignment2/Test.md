@@ -213,6 +213,69 @@ describe('Subscription Activation', function () {
 });
 ```
 
+### **Test Case 5: Scalability- Verify Website Scalability Under High Load**
+
+```markdown
+Feature: Scalability Testing
+  As a developer
+  I want the website to handle increased user load
+  So that it performs efficiently under stress
+
+  Scenario: Simulate 1000 concurrent users accessing the homepage API
+    Given the server is running
+    When 1000 concurrent requests are sent to the homepage API
+    Then the server should respond to 95% of the requests successfully
+    And the average response time should remain under 2 seconds
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Scalability Testing', function () {
+  this.timeout(20000); // Extend timeout for scalability tests
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const totalRequests = 1000; // Total number of requests
+  const maxResponseTime = 2000; // Maximum acceptable average response time in ms
+  const successThreshold = 0.95; // Minimum success rate
+
+  it('should handle 1000 concurrent requests within performance limits', (done) => {
+    const promises = [];
+    const startTime = new Date().getTime(); // Record the start time
+
+    for (let i = 0; i < totalRequests; i++) {
+      promises.push(
+        chai.request(server)
+          .get('/homepage') // Replace with your homepage endpoint
+          .then((res) => res.status === 200 ? 1 : 0) // Count successful requests
+          .catch(() => 0) // Count failed requests
+      );
+    }
+
+    Promise.all(promises).then((results) => {
+      const endTime = new Date().getTime(); // Record the end time
+      const successfulRequests = results.reduce((sum, value) => sum + value, 0);
+      const failedRequests = totalRequests - successfulRequests;
+      const averageResponseTime = (endTime - startTime) / totalRequests;
+
+      // Assertions
+      expect(successfulRequests / totalRequests).to.be.greaterThan(successThreshold, 'Success rate is below 95%');
+      expect(failedRequests).to.be.lessThan(totalRequests * 0.05, 'Failed requests exceed 5%');
+      expect(averageResponseTime).to.be.lessThan(maxResponseTime, 'Average response time exceeds 2 seconds');
+
+      done();
+    });
+  });
+});
+```
+
+
+
+
+
 ## References
 The following references were used during the development and testing of the Nova Digital project:
 
