@@ -85,7 +85,7 @@ The scope includes testing both functional and non-functional requirements of th
 **Mitigation:** Use BrowserStack for cross-browser testing.
 
 ## Test Cases 
-### **Test Case 1: User Login**
+### Test Case 1: User Login
 
 ```markdown
 Feature: User Login
@@ -124,7 +124,7 @@ describe('User Login', function () {
 }); 
 ```
 
-### **Test Case 2: Search Functionality**
+### Test Case 2: Search Functionality
 ```markdown
 Feature: Search Functionality
   Scenario: Search returns relevant results
@@ -154,7 +154,7 @@ describe('Search Functionality', function () {
 });
 ```
 
-### **Test Case 3: Video Playback**
+### Test Case 3: Video Playback
 
 ```markdown
 Feature: Video Playback
@@ -183,7 +183,7 @@ describe('Video Playback', function () {
 
 ```
 
-### **Test Case 4: Subscription Activation**
+### Test Case 4: Subscription Activation
 
 ```markdown
 Feature: Subscription Activation
@@ -213,7 +213,7 @@ describe('Subscription Activation', function () {
 });
 ```
 
-### **Test Case 5: Verify Website Scalability Under High Load**
+### Test Case 5: Verify Website Scalability Under High Load
 
 ```markdown
 Feature: Scalability Testing
@@ -272,7 +272,7 @@ describe('Scalability Testing', function () {
 });
 ```
 
-### **Test Case 6: Verify Homepage API Latency**
+### Test Case 6: Verify Homepage API Latency
 ```markdown
 Feature: Latency Testing
   As a user
@@ -317,9 +317,115 @@ describe('Latency Testing', function () {
 });
 ```
 
+### Test Case 7: Verify Throughput for Homepage API
+```markdown
+Feature: Throughput Testing
+  As a user
+  I want the server to handle multiple requests efficiently
+  So that the website remains responsive under heavy load
 
+  Scenario: Measure throughput for the homepage API
+    Given the server is running
+    When 1000 concurrent requests are sent to the homepage API
+    Then at least 95% of the requests should succeed
+    And the average response time should be under 2 seconds
+```
 
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
 
+chai.use(chaiHttp);
+
+describe('Throughput Testing', function () {
+  this.timeout(10000); // Extend timeout for throughput tests
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const totalRequests = 1000; // Total number of requests to simulate
+  const concurrency = 100; // Number of concurrent requests per batch
+  const maxResponseTime = 2000; // Maximum acceptable average response time in ms
+
+  it('should handle 1000 requests with acceptable throughput and response time', (done) => {
+    const promises = [];
+    const startTime = new Date().getTime(); // Record the start time
+
+    for (let i = 0; i < totalRequests; i++) {
+      promises.push(
+        chai.request(server)
+          .get('/homepage') // Replace with the actual endpoint
+          .then((res) => {
+            return res.status === 200 ? 1 : 0; // Count successful requests
+          })
+          .catch(() => 0) // Count failed requests
+      );
+    }
+
+    Promise.all(promises).then((results) => {
+      const endTime = new Date().getTime(); // Record the end time
+      const successfulRequests = results.reduce((sum, value) => sum + value, 0);
+      const failedRequests = totalRequests - successfulRequests;
+      const averageResponseTime = (endTime - startTime) / totalRequests;
+
+      // Assertions
+      expect(successfulRequests).to.be.greaterThan(totalRequests * 0.95, 'Less than 95% requests succeeded');
+      expect(averageResponseTime).to.be.lessThan(maxResponseTime, 'Average response time exceeded limit');
+      expect(failedRequests).to.be.lessThan(totalRequests * 0.05, 'Too many failed requests');
+
+      done();
+    });
+  });
+});
+```
+
+### Test Case 8: Bandwidth Optimization Test for Video Streaming
+
+```markdown
+Feature: Bandwidth Optimization
+  As a user
+  I want video streaming to use minimal bandwidth
+  So that I can stream content efficiently on limited networks
+
+  Scenario: Stream video with optimized bandwidth
+    Given the server is running
+    And the user requests a video stream
+    When the video is played
+    Then the video should be streamed in adaptive bitrate
+    And the total data usage should be minimized
+```
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Bandwidth Optimization Testing', function () {
+  this.timeout(15000); // Allow extra time for video stream tests
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const maxBandwidthUsage = 5 * 1024 * 1024; // Maximum allowable data usage in bytes (5MB for a sample test)
+  const videoId = 'sampleVideo123'; // Replace with a test video ID
+
+  it('should stream video with optimized bandwidth usage', (done) => {
+    chai.request(server)
+      .get(`/videos/${videoId}/stream`) // Replace with your video streaming endpoint
+      .responseType('arraybuffer') // Ensure we measure raw data size
+      .end((err, res) => {
+        if (err) return done(err);
+
+        const dataSize = res.body.byteLength; // Get size of the data transferred
+        const isAdaptiveBitrate = res.headers['content-type'] === 'video/mp4'; // Example check for adaptive bitrate
+
+        // Assertions
+        expect(res).to.have.status(200);
+        expect(isAdaptiveBitrate).to.be.true; // Ensure video uses adaptive bitrate
+        expect(dataSize).to.be.lessThan(maxBandwidthUsage, 'Data usage exceeds optimization limit');
+
+        done();
+      });
+  });
+});
+
+```
 
 
 
