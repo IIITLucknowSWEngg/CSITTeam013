@@ -2117,6 +2117,323 @@ describe('Content Delivery Network (CDN) - Regional Content Delivery Performance
 });
 ```
 
+### Test Case 24: Cross-Platform Compatibility
+**Scenario: Verify Cross-Platform Compatibility Across Devices**
+```markdown
+Feature: Cross-Platform Compatibility - Seamless Experience Across Devices
+  As a user
+  I want the platform to work seamlessly across various devices
+  So that I can access content on my smart TV, smartphone, and tablet without any issues
+
+  Scenario: The platform should work seamlessly across smart TVs, smartphones, and tablets
+    Given the user is accessing the platform on a smart TV
+    When the user browses content
+    Then the content should be displayed correctly with no layout issues
+
+  Scenario: The platform should work seamlessly across smartphones and tablets
+    Given the user is accessing the platform on a smartphone
+    When the user selects content to view
+    Then the content should be displayed correctly with no layout issues on the device
+
+  Scenario: The platform should adjust UI/UX based on the device type (smart TV, smartphone, tablet)
+    Given the user is accessing the platform on different devices
+    When the user interacts with the platform
+    Then the platform should display optimized layouts for each device
+    And the user interface should be responsive and intuitive across all devices
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Cross-Platform Compatibility - Seamless Experience Across Devices', function () {
+  this.timeout(15000); // Allow time for checking compatibility
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const resource = '/content/sample-video.mp4'; // Replace with your resource endpoint
+
+  it('should display content correctly on a smart TV', (done) => {
+    chai.request(server)
+      .get(resource)
+      .set('X-Device-Type', 'smart-tv') // Simulate a smart TV request
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Check for layout and content display correctness on smart TV
+        expect(res.status).to.equal(200); // Ensure the content was delivered successfully
+        expect(res.body.layout).to.equal('smart-tv'); // Assert layout is optimized for smart TV
+        done();
+      });
+  });
+
+  it('should display content correctly on a smartphone', (done) => {
+    chai.request(server)
+      .get(resource)
+      .set('X-Device-Type', 'smartphone') // Simulate a smartphone request
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Check for layout and content display correctness on smartphone
+        expect(res.status).to.equal(200); // Ensure the content was delivered successfully
+        expect(res.body.layout).to.equal('smartphone'); // Assert layout is optimized for smartphone
+        done();
+      });
+  });
+
+  it('should display content correctly on a tablet', (done) => {
+    chai.request(server)
+      .get(resource)
+      .set('X-Device-Type', 'tablet') // Simulate a tablet request
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Check for layout and content display correctness on tablet
+        expect(res.status).to.equal(200); // Ensure the content was delivered successfully
+        expect(res.body.layout).to.equal('tablet'); // Assert layout is optimized for tablet
+        done();
+      });
+  });
+
+  it('should adjust UI/UX for each device type (smart TV, smartphone, tablet)', (done) => {
+    const devices = ['smart-tv', 'smartphone', 'tablet'];
+
+    devices.forEach((device) => {
+      chai.request(server)
+        .get(resource)
+        .set('X-Device-Type', device) // Simulate requests from different devices
+        .end((err, res) => {
+          if (err) return done(err);
+
+          // Step 1: Assert that the platform adjusts the layout for each device
+          expect(res.status).to.equal(200); // Ensure the content is delivered successfully
+          expect(res.body.layout).to.not.be.null; // Ensure layout is set
+          expect(res.body.layout).to.equal(device); // Ensure layout corresponds to the device type
+          
+          // Continue testing for other devices
+          if (device === 'tablet') {
+            done(); // Final callback when all device types have been tested
+          }
+        });
+    });
+  });
+});
+```
+
+### Test Case 25: Third-Party Integrations
+**Scenario: Verify Integration with Payment Gateway**
+```markdown
+Feature: Third-Party Integrations - Payment Gateway Integration
+  As a user
+  I want to be able to make secure payments through third-party payment gateways
+  So that I can complete transactions easily and securely
+
+  Scenario: The platform should integrate with third-party payment gateways for processing payments
+    Given the user has selected a payment method (e.g., credit card, PayPal)
+    When the user enters payment details
+    Then the payment should be processed successfully through the payment gateway
+    And the user should receive a confirmation of payment
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Third-Party Integrations - Payment Gateway Integration', function () {
+  this.timeout(10000); // Allow time for payment gateway processing
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const paymentDetails = {
+    method: 'credit_card', // Example payment method
+    cardNumber: '4111111111111111', // Example card number
+    expiryDate: '12/25',
+    cvv: '123',
+    amount: '50.00',
+  };
+
+  it('should process payment through a third-party payment gateway', (done) => {
+    chai.request(server)
+      .post('/payment/process') // Replace with the actual payment endpoint
+      .send(paymentDetails)
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Assert the payment was processed successfully
+        expect(res.status).to.equal(200); // Ensure successful payment
+        expect(res.body.paymentStatus).to.equal('success'); // Payment status should be success
+
+        // Step 2: Ensure a confirmation is received
+        expect(res.body.confirmation).to.exist; // Ensure confirmation details are returned
+        done();
+      });
+  });
+});
+```
+
+**Scenario: Verify Social Media Login Integration**
+```markdown
+Feature: Third-Party Integrations - Social Media Login Integration
+  As a user
+  I want to log in using my social media accounts
+  So that I can quickly access the platform without creating a new account
+
+  Scenario: The platform should integrate with social media logins (e.g., Facebook, Google)
+    Given the user selects a social media login option (e.g., Google)
+    When the user grants the necessary permissions
+    Then the user should be successfully logged in to the platform using their social media credentials
+    And the user should be redirected to their personalized dashboard
+```
+
+```javascript
+describe('Third-Party Integrations - Social Media Login Integration', function () {
+  this.timeout(10000); // Allow time for social media authentication
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const socialMediaDetails = {
+    provider: 'google', // Example social media provider
+    token: 'sample-oauth-token', // Example OAuth token received from Google
+  };
+
+  it('should authenticate the user using a Google social media login', (done) => {
+    chai.request(server)
+      .post('/auth/social-login') // Replace with the actual social login endpoint
+      .send(socialMediaDetails)
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Assert the user was successfully logged in via social media
+        expect(res.status).to.equal(200); // Ensure successful login
+        expect(res.body.user).to.exist; // User data should be returned
+        expect(res.body.user.email).to.equal('user@example.com'); // Assert correct user email
+
+        // Step 2: Ensure the user is redirected to their personalized dashboard
+        expect(res.body.redirectUrl).to.include('/dashboard'); // Check for redirection to dashboard
+        done();
+      });
+  });
+});
+```
+
+### Test Case 26: APIs
+**Scenario: Verify API Accessibility and Documentation**
+```markdown
+Feature: Open and Well-Documented APIs for Third-Party Apps
+  As a developer
+  I want to use well-documented APIs
+  So that I can integrate third-party apps and plugins smoothly
+
+  Scenario: The API should be accessible with proper authentication
+    Given the API documentation is available publicly
+    When the developer makes an authenticated API request
+    Then the response should contain the expected data
+    And the API should return a successful HTTP status code (200)
+
+  Scenario: The API documentation should provide examples and usage instructions
+    Given the developer accesses the API documentation
+    When they review the documentation
+    Then it should include example requests and responses
+    And it should include authentication guidelines
+
+  Scenario: The API should handle errors gracefully
+    Given the developer makes an API request with invalid data
+    When the server processes the request
+    Then the API should return an appropriate error message with HTTP status code 400 (Bad Request)
+    And the error message should explain the issue
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('API Integration - Accessibility and Authentication', function () {
+  this.timeout(10000); // Allow time for API responses
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const apiEndpoint = '/api/v1/content'; // Replace with your API endpoint
+
+  it('should return a successful response with valid authentication', (done) => {
+    chai.request(server)
+      .get(apiEndpoint)
+      .set('Authorization', 'Bearer valid-api-token') // Replace with a valid token
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Ensure that the response status is 200 OK
+        expect(res.status).to.equal(200);
+
+        // Step 2: Ensure that the response contains expected data
+        expect(res.body).to.have.property('data'); // Ensure data is returned
+        expect(res.body.data).to.be.an('array'); // Ensure data is in array form
+        done();
+      });
+  });
+});
+```
+
+```javascript
+describe('API Documentation Accessibility', function () {
+  this.timeout(5000); // Allow time for documentation response
+
+  const documentationUrl = 'http://localhost:3000/api-docs'; // Replace with your API documentation URL
+
+  it('should have documentation available with usage examples', (done) => {
+    chai.request(documentationUrl)
+      .get('/')
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Ensure the documentation page is accessible
+        expect(res.status).to.equal(200);
+
+        // Step 2: Check if the documentation contains examples of API requests and responses
+        expect(res.text).to.include('Example Request'); // Ensure example requests are present
+        expect(res.text).to.include('Example Response'); // Ensure example responses are present
+
+        // Step 3: Ensure it includes authentication guidelines
+        expect(res.text).to.include('Authorization'); // Check if Authorization is mentioned
+        done();
+      });
+  });
+});
+```
+
+```javascript
+describe('API Integration - Error Handling', function () {
+  this.timeout(5000); // Allow time for error response
+
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const apiEndpoint = '/api/v1/content'; // Replace with your API endpoint
+
+  it('should return an error for invalid requests', (done) => {
+    chai.request(server)
+      .post(apiEndpoint)
+      .send({ invalidData: 'test' }) // Invalid data
+      .end((err, res) => {
+        if (err) return done(err);
+
+        // Step 1: Ensure that the response status is 400 Bad Request
+        expect(res.status).to.equal(400);
+
+        // Step 2: Ensure the error message explains the issue
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('Invalid data format');
+        done();
+      });
+  });
+});
+```
+
+
+
+
 
 
 
