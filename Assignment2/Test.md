@@ -213,7 +213,7 @@ describe('Subscription Activation', function () {
 });
 ```
 
-### **Test Case 5: Scalability- Verify Website Scalability Under High Load**
+### **Test Case 5: Verify Website Scalability Under High Load**
 
 ```markdown
 Feature: Scalability Testing
@@ -271,6 +271,56 @@ describe('Scalability Testing', function () {
   });
 });
 ```
+
+### **Test Case 6: Verify Homepage API Latency**
+```markdown
+Feature: Latency Testing
+  As a user
+  I want the website to respond quickly
+  So that I can have a seamless experience
+
+  Scenario: Homepage API responds within acceptable latency
+    Given the server is running
+    When a request is sent to the homepage API
+    Then the response should be received within 2 seconds
+    And the status code should be 200
+```
+
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('Latency Testing', function () {
+  this.timeout(5000); // Extend timeout for latency testing
+  const server = 'http://localhost:3000'; // Replace with your server URL
+  const maxLatency = 2000; // Maximum acceptable latency in milliseconds
+
+  it('should respond within 2 seconds for the homepage API', (done) => {
+    const startTime = new Date().getTime(); // Record the start time
+
+    chai.request(server)
+      .get('/homepage') // Replace with the appropriate endpoint
+      .end((err, res) => {
+        const endTime = new Date().getTime(); // Record the end time
+        const responseTime = endTime - startTime; // Calculate latency
+
+        // Assertions
+        expect(res).to.have.status(200);
+        expect(responseTime).to.be.lessThan(maxLatency, 'Response time exceeds acceptable latency');
+
+        done();
+      });
+  });
+});
+```
+
+
+
+
+
 
 
 
