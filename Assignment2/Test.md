@@ -195,7 +195,7 @@ Feature: Subscription Activation
     And the user should gain access to premium content
 ```
 
-
+**Chai Test Code:**
 ```javascript
 describe('Subscription Activation', function () {
     it('should activate subscription upon successful payment', async function () {
@@ -227,7 +227,7 @@ Feature: Scalability Testing
     Then the server should respond to 95% of the requests successfully
     And the average response time should remain under 2 seconds
 ```
-
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -285,7 +285,7 @@ Feature: Latency Testing
     Then the response should be received within 2 seconds
     And the status code should be 200
 ```
-
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -330,7 +330,7 @@ Feature: Throughput Testing
     Then at least 95% of the requests should succeed
     And the average response time should be under 2 seconds
 ```
-
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -392,6 +392,8 @@ Feature: Bandwidth Optimization
     Then the video should be streamed in adaptive bitrate
     And the total data usage should be minimized
 ```
+
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -443,6 +445,7 @@ Feature: Data Protection
     And the request payload should be encrypted
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -481,7 +484,7 @@ Scenario: Prevent unauthorized access to user profile data
   When a GET request is sent to the user profile API without authentication
   Then the response should have a 401 Unauthorized status code
 ```
-
+**Chai Test Code:**
 ```javascript
 describe('Data Protection - Unauthorized Access', function () {
   this.timeout(5000);
@@ -517,7 +520,7 @@ Feature: Service Availability
     Then the website should be responsive with minimal downtime
     And the user should not experience significant service interruptions
 ```
-
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -558,7 +561,7 @@ Scenario: Ensure zero downtime during rolling updates
   Then traffic should be rerouted to other servers
   And no downtime should be experienced by the user
 ```
-
+**Chai Test Code:**
 ```javascript
 describe('Service Availability - Rolling Updates', function () {
   this.timeout(30000); // Allow time for rolling updates to occur
@@ -599,7 +602,7 @@ Feature: Content Control
     Then the user should be denied access to the content
     And the user should see a message indicating that the content is restricted due to age
 ```
-
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -644,6 +647,7 @@ Scenario: Ensure users of appropriate age can access content
   And the user should be able to view the content without restrictions
 ```
 
+**Chai Test Code:**
 ```javascript
 describe('Content Control - Age Restrictions', function () {
   this.timeout(5000);
@@ -689,6 +693,7 @@ Feature: User Authentication
 
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -758,6 +763,7 @@ Scenario: User must set a strong password during registration
   And the user should not be able to complete the registration
 ```
 
+**Chai Test Code:**
 ```javascript
 describe('User Authentication - Strong Password Policy', function () {
   this.timeout(5000); // Allow time for password validation testing
@@ -809,6 +815,7 @@ Feature: Data Encryption
     And the user should not be able to intercept the data with unauthorized tools
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -861,6 +868,8 @@ Scenario: Verify that user data is encrypted at rest
   Then the data should be encrypted in storage
   And the data should remain unreadable to unauthorized users or systems
 ```
+
+**Chai Test Code:**
 ```javascript
 describe('Data Encryption - At Rest', function () {
   this.timeout(5000); // Allow time for testing encryption at rest
@@ -923,6 +932,7 @@ Feature: Role-Based Access Control (RBAC)
     And the user should not have access to administrative features
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -1026,7 +1036,7 @@ Feature: Fraud Detection - Multiple Failed Login Attempts
     Then the system should flag the login as suspicious
     And prompt the user to verify the login via email or SMS
 ```
-
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -1129,6 +1139,7 @@ Scenario: Prevent piracy by detecting simultaneous streaming from multiple locat
   And the user should be notified about the piracy attempt
 ```
 
+**Chai Test Code:**
 ```javascript
 describe('Fraud Detection - Piracy Prevention (Simultaneous Streaming)', function () {
   this.timeout(5000); // Allow time for testing piracy prevention
@@ -1209,6 +1220,7 @@ Feature: Usability - Intuitive User Interface
     Then a tooltip with a description of the element should appear
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -1386,6 +1398,7 @@ Feature: Localization - Audio and Subtitles in Regional Languages
     Then the subtitles should appear in the selected language
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -1513,6 +1526,9 @@ Feature: Modular Architecture - Independent Module Updates
     And there should be no issues in unrelated modules (e.g., "User Profile")
 ```
 
+
+
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -1568,6 +1584,7 @@ Feature: Modular Architecture - Easy Feature Addition
     And there should be no impact on existing features (e.g., "User Profile", "Payment")
 ```
 
+**Chai Test Code:**
 ```javascript
 describe('Modular Architecture - Easy Feature Addition', function () {
   this.timeout(5000); // Allow time for feature addition testing
@@ -1640,6 +1657,7 @@ Feature: Automated Testing - Continuous Integration and Automated Bug Detection
     And any failing tests should be reported
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -1691,6 +1709,7 @@ Feature: Automated Testing - Quick Bug Detection
     And a bug report should be generated in the CI system
 ```
 
+**Chai Test Code:**
 ```javascript
 describe('Automated Testing - Quick Bug Detection', function () {
   this.timeout(5000); // Allow time for bug detection testing
@@ -1738,6 +1757,7 @@ Feature: Version Control - Track Changes and Revert to Stable Versions
     And the changes should be visible in the version history
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -1792,6 +1812,7 @@ Feature: Version Control - Revert to Stable Version
     And the application should function correctly with the reverted version
 ```
 
+**Chai Test Code:**
 ```javascript
 describe('Version Control - Revert to Stable Version', function () {
   this.timeout(5000); // Allow time for version control and deployment actions
@@ -1841,6 +1862,7 @@ Feature: Fault Tolerance - Recovery from Software Failures
     And the user should not notice any interruptions in their experience
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -1892,6 +1914,7 @@ Feature: Fault Tolerance - Recovery from Hardware Failures
     And the user should not notice any interruptions in their experience
 ```
 
+**Chai Test Code:**
 ```javascript
 describe('Fault Tolerance - Hardware Failure Recovery', function () {
   this.timeout(5000); // Allow time for hardware failure recovery
@@ -1938,6 +1961,7 @@ Feature: High Availability - Ensure 99.99% Uptime
     And the user should not experience any downtime
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -1990,6 +2014,7 @@ Feature: High Availability - Automatic Failover
     And the user should not notice any interruptions
 ```
 
+**Chai Test Code:**
 ```javascript
 describe('High Availability - Automatic Failover', function () {
   this.timeout(10000); // Allow time for failover actions
@@ -2035,8 +2060,9 @@ Feature: Content Delivery Network (CDN) - Quick and Reliable Content Delivery
     Then the system should use the nearest CDN edge server to deliver the content
     And the content should load quickly with minimal latency
 ```
-```javascript
 
+**Chai Test Code:**
+```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
@@ -2080,8 +2106,9 @@ Feature: Content Delivery Network (CDN) - Regional Content Delivery Performance
     Then the content should be delivered from the nearest CDN server to minimize latency
     And the loading times for the content should be fast and consistent across regions
 ```
-```javascript
 
+**Chai Test Code:**
+```javascript
 describe('Content Delivery Network (CDN) - Regional Content Delivery Performance', function () {
   this.timeout(15000); // Allow time for performance checks across regions
 
@@ -2142,6 +2169,7 @@ Feature: Cross-Platform Compatibility - Seamless Experience Across Devices
     And the user interface should be responsive and intuitive across all devices
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -2237,6 +2265,7 @@ Feature: Third-Party Integrations - Payment Gateway Integration
     And the user should receive a confirmation of payment
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -2289,6 +2318,7 @@ Feature: Third-Party Integrations - Social Media Login Integration
     And the user should be redirected to their personalized dashboard
 ```
 
+**Chai Test Code:**
 ```javascript
 describe('Third-Party Integrations - Social Media Login Integration', function () {
   this.timeout(10000); // Allow time for social media authentication
@@ -2346,6 +2376,7 @@ Feature: Open and Well-Documented APIs for Third-Party Apps
     And the error message should explain the issue
 ```
 
+**Chai Test Code:**
 ```javascript
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -2430,14 +2461,6 @@ describe('API Integration - Error Handling', function () {
   });
 });
 ```
-
-
-
-
-
-
-
-
 
 
 ## References
