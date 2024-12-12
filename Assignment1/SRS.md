@@ -22,7 +22,6 @@
    - [3.4 Personalized Recommendations](#34-personalized-recommendations)
    - [3.5 Progress Tracking](#35-progress-tracking)
    - [3.6 Gamification](#36-gamification)
-   (#37-social-and-community-features)
    - [3.7 Premium Features](#38-premium-features)
    - [3.8 Usability Features](#39-usability-features)
 4. [External Interface Requirements](#4-external-interface-requirements)
