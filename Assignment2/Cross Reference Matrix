@@ -1,0 +1,11 @@
+# Cross-Reference Matrix
+
+| Stakeholder         | URD Topic                  | SRS Section Number | SRS Topic                     | Architecture Section | Architecture Topic             | Design Section | Design Topic                   | Test Section | Test Topics                       |
+|----------------------|----------------------------|--------------------|-------------------------------|-----------------------|-------------------------------|----------------|---------------------------------|--------------|------------------------------------|
+| Users               | Content Selection         | SRS-3.4           | Personalized Recommendations | Arch-2               | Container Diagram             | Design-2       | System Overview                | Test-1       | User Login (Chai Test Code)       |
+| Users               | Content Playback and Control | SRS-4.1.iv      | Playback Controls            | Arch-3.1             | Component Diagram             | Design-3.1     | Architectural Overview         | Test-3       | Video Playback                    |
+| Subscribers         | Subscription Management   | SRS-4.3.iv        | Payment Gateway Integration  | Arch-3               | Component Diagram             | Design-4.5     | Billing and Subscription       | Test-4       | Subscription Activation           |
+| Design Team         | User Profile Creation     | SRS-4.1.v         | Profile Management           | Arch-3               | Component Diagram for Admins  | Design-5       | Deployment                     | Test-14      | Access Control                    |
+| Development Team    | Multi-Device Streaming    | SRS-4.2           | Hardware Interface Requirements | Arch-4            | Deployment Diagram            | Design-6       | Data Design                    | Test-10      | Service Availability              |
+| Regulatory Bodies   | Parental Controls         | SRS-5.3           | Security Requirements        | Arch-1               | System Context Diagram        | Design-6.2     | Data Processing                | Test-9       | Data Protection                   |
+| Content Creators    | Content Recommendations   | SRS-3.5           | Progress Tracking            | Arch-1               | System Context Diagram        | Design-7.1     | User Interface Wireframes      | Test-23      | Content Delivery Network (CDN)    |
