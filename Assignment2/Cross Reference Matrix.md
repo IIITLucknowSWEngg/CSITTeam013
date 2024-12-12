@@ -13,3 +13,5 @@ This matrix maps the system requirements to their corresponding components, desi
 | Content Creators    | Content Recommendations   | SRS-3.5           | Progress Tracking            | Arch-1               | System Context Diagram        | Design-7.1     | User Interface Wireframes      | Test-23      | Content Delivery Network (CDN)    |
 
 This matrix helps to ensure that all system requirements are covered by appropriate components, designed correctly, and tested comprehensively.
+
+Link for CRM: https://docs.google.com/spreadsheets/d/1K_gWxuou5kYK3zS9kJ4RuSv_4LGHveuR1v6k0qj0HD8/edit?usp=sharing
