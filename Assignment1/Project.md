@@ -121,7 +121,7 @@ Nova Digital is a premium video streaming platform offering a diverse range of c
 
 - **Frontend:** React, HTML5, CSS3, JavaScript, TypeScript
 - **Backend:** Node.js, Python, Java (for microservices)
-- **Database:** MongoDB, MySQL, Redis (for caching)
+- **Database:** MongoDB, PostgreSQL, Redis (for caching)
 - **Video Streaming:** HLS (HTTP Live Streaming), DASH, DRM technologies (Widevine, PlayReady)
 - **CDN:** Cloudflare, Akamai, AWS CloudFront
 - **Payment Integration:** Stripe, PayPal, Razorpay

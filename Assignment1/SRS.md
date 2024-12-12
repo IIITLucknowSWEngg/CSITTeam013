@@ -22,9 +22,9 @@
    - [3.4 Personalized Recommendations](#34-personalized-recommendations)
    - [3.5 Progress Tracking](#35-progress-tracking)
    - [3.6 Gamification](#36-gamification)
-   - [3.7 Social and Community Features](#37-social-and-community-features)
-   - [3.8 Premium Features](#38-premium-features)
-   - [3.9 Usability Features](#39-usability-features)
+   (#37-social-and-community-features)
+   - [3.7 Premium Features](#38-premium-features)
+   - [3.8 Usability Features](#39-usability-features)
 4. [External Interface Requirements](#4-external-interface-requirements)
   - [4.1 User Interface Requirements](#41-user-interface-requirements)
     - [i. Home Page](#i-home-page)
@@ -45,9 +45,8 @@
     - [iv. Payment Gateway](#iv-payment-gateway)
   - [4.4 Communication Interface Requirements](#44-communication-interface-requirements)
     - [i. API (Application Programming Interface)](#i-api-application-programming-interface)
-    - [ii. Social Media Integration](#ii-social-media-integration)
-    - [iii. Customer Support](#iii-customer-support)
-    - [iv. Content Providers](#iv-content-providers)
+    - [ii. Customer Support](#iii-customer-support)
+    - [iii. Content Providers](#iv-content-providers)
 5. [Non-functional Requirements](#5-non-functional-requirements)
   - [5.1 Performance Requirements](#51-performance-requirements)
   - [5.2 Safety Requirements](#52-safety-requirements)
@@ -201,14 +200,7 @@ To boost user engagement, NOVA Digital will include:
 - Achievements and Badges: Unlockable rewards for frequent usage or completing content.
 - Leaderboards: Social rankings among friends or the broader user community based on content engagement.
 
-### 3.7 Social and Community Features
-
-To encourage interaction and sharing:
-
-- Social Sharing: Users can share their favorite shows or movies on platforms like Facebook, Twitter, and Instagram.
-- Community Discussions: Built-in forums or comment sections where users can discuss episodes or movies with the community.
-
-### 3.8 Premium Features
+### 3.7 Premium Features
 
 For premium subscribers:
 
@@ -217,7 +209,7 @@ For premium subscribers:
 - Higher-Quality Streaming: Access to 4K, HDR, and other premium viewing options.
 - Exclusive Content: Early access to new releases and exclusive shows.
 
-### 3.9 Usability Features
+### 3.8 Usability Features
 
 The platform will prioritize usability with:
 
@@ -293,12 +285,6 @@ The platform will prioritize usability with:
 - **API (Application Programming Interface)**:  
   The streaming service shall provide an API to allow third-party developers to integrate its content catalog and user management systems into other platforms. The API shall provide access to the movie, TV show, and sports event catalogs, user preferences, watchlists, and account management features. Proper API documentation shall be provided to facilitate integration.
 
-- **Social Media Integration**:  
-  The service shall allow users to share content (movies, shows, sports) on popular social media platforms, including:
-  - Facebook
-  - Twitter
-  - Instagram  
-  Users shall be able to log in using their social media accounts to streamline the registration process.
 
 - **Customer Support**:  
   The service shall offer customer support through:
@@ -364,9 +350,6 @@ The platform will prioritize usability with:
   Strict role-based access control (RBAC) for managing administrative and user privileges.
   - **Use Case:** Only authorized administrators can access the platform’s backend to update content, while customer service representatives can only access user support tickets and account-related queries.
 
-- **Fraud Detection:**  
-  Systems to detect and mitigate fraudulent access or piracy attempts.
-  - **Use Case:** The platform detects a user attempting to bypass geo-restrictions using a VPN and immediately restricts access to the content, notifying the user of the violation.
 
 ### 5.4 Software Quality Attributes:
 
@@ -398,10 +381,6 @@ The platform will prioritize usability with:
 
 ### 5.6 Reliability Requirements:
 
-- **Fault Tolerance:**  
-  The system should have mechanisms to recover from hardware or software failures without impacting user experience.
-  - **Use Case:** While a user is streaming a show, one server experiences an issue. The system automatically switches the user’s session to a backup server, allowing the stream to continue without interruption.
-
 - **High Availability:**  
   Ensure 99.99% uptime, with redundant servers and automatic failover.
   - **Use Case:** Even during scheduled maintenance, the platform remains accessible due to server redundancy, ensuring that users don’t experience downtime.
@@ -417,8 +396,8 @@ The platform will prioritize usability with:
   - **Use Case:** A user starts watching a series on their phone, pauses it, and resumes watching on their smart TV without any issues or loss of progress.
 
 - **Third-Party Integrations:**  
-  Ability to integrate with external services like payment gateways and social media.
-  - **Use Case:** A user connects their Netflix account to their social media, sharing what they’re watching on their profile and using an integrated payment gateway to renew their subscription.
+  Ability to integrate with external services like payment gateways.
+  - **Use Case:** A user uses an integrated payment gateway to renew their subscription on NOVA Digital.
 
 - **APIs:**  
   Open and well-documented APIs for third-party apps and plugins.

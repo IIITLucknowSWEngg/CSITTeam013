@@ -108,7 +108,7 @@ The system operates across devices, using REST and GraphQL APIs to interact with
    - Stores structured data (user profiles, subscription details, content metadata).  
 2. **Redis**  
    - Caching frequently accessed data (e.g., trending content).  
-3. **NoSQL (e.g., MongoDB)**  
+3. **MongoDB**  
    - Stores unstructured data like watch history and personalized recommendations.  
 
 ---  
@@ -118,9 +118,7 @@ The system operates across devices, using REST and GraphQL APIs to interact with
 1. **CDN (e.g., Akamai, Cloudflare)**  
    - Ensures high-speed delivery of video content.  
 2. **Payment Gateway**  
-   - Secure online transactions.  
-3. **Analytics (e.g., Google Analytics, Mixpanel)**  
-   - Tracks user engagement and application performance.  
+   - Secure online transactions.   
 
 ---  
 

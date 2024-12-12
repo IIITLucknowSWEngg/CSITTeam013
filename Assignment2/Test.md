@@ -2304,51 +2304,6 @@ describe('Third-Party Integrations - Payment Gateway Integration', function () {
 });
 ```
 
-**Scenario: Verify Social Media Login Integration**
-```markdown
-Feature: Third-Party Integrations - Social Media Login Integration
-  As a user
-  I want to log in using my social media accounts
-  So that I can quickly access the platform without creating a new account
-
-  Scenario: The platform should integrate with social media logins (e.g., Facebook, Google)
-    Given the user selects a social media login option (e.g., Google)
-    When the user grants the necessary permissions
-    Then the user should be successfully logged in to the platform using their social media credentials
-    And the user should be redirected to their personalized dashboard
-```
-
-**Chai Test Code:**
-```javascript
-describe('Third-Party Integrations - Social Media Login Integration', function () {
-  this.timeout(10000); // Allow time for social media authentication
-
-  const server = 'http://localhost:3000'; // Replace with your server URL
-  const socialMediaDetails = {
-    provider: 'google', // Example social media provider
-    token: 'sample-oauth-token', // Example OAuth token received from Google
-  };
-
-  it('should authenticate the user using a Google social media login', (done) => {
-    chai.request(server)
-      .post('/auth/social-login') // Replace with the actual social login endpoint
-      .send(socialMediaDetails)
-      .end((err, res) => {
-        if (err) return done(err);
-
-        // Step 1: Assert the user was successfully logged in via social media
-        expect(res.status).to.equal(200); // Ensure successful login
-        expect(res.body.user).to.exist; // User data should be returned
-        expect(res.body.user.email).to.equal('user@example.com'); // Assert correct user email
-
-        // Step 2: Ensure the user is redirected to their personalized dashboard
-        expect(res.body.redirectUrl).to.include('/dashboard'); // Check for redirection to dashboard
-        done();
-      });
-  });
-});
-```
-
 ### Test Case 26: APIs
 **Scenario: Verify API Accessibility and Documentation**
 ```markdown
