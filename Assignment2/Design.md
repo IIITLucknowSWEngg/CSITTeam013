@@ -160,10 +160,7 @@ The system operates across devices, using REST and GraphQL APIs to interact with
    - Video Player: Supports subtitles, quality adjustment, and playback controls.  
    - Profile: Subscription details, settings, and watchlist.  
 
-2. **Controller Layer**  
-   - Manages requests and communicates with the backend.  
-
-3. **Service Layer**  
+2. **Service Layer**  
    - Handles business logic like video playback, recommendations, and subscriptions.  
 
 ---  
